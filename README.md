@@ -11,6 +11,8 @@
 
 <big>**Adds over 80 unique enchantments to your server and more!**</big>
 
+<big>**FORK BY SHINI FOR ABMC**</big>
+
 <big>**Quick Links**</big><br>
 [Request Features](https://github.com/Crazy-Crew/CrazyEnchantments/issues)<br>
 [Documentation](https://docs.crazycrew.us/docs/category/crazyenchantments)<br>

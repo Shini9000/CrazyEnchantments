@@ -82,6 +82,7 @@ public class AuraListener implements Listener {
     }
     
     // Hello Shini
+    // Hello Gabe
 
     private CEnchantments getAuraEnchantmentEnum(CEnchantment enchantment) {
         return Arrays.stream(AURA_ENCHANTMENTS).filter(enchantmentEnum -> enchantmentEnum.getName().equals(enchantment.getName())).findFirst().orElse(null);
