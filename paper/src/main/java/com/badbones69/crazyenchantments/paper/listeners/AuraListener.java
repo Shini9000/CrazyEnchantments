@@ -16,6 +16,8 @@ import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +42,8 @@ public class AuraListener implements Listener {
             CEnchantments.INTIMIDATE
     };
 
+    private static final int NEARBY_PLAYER_RADIUS = 3;
+
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerMoveEvent(PlayerMoveEvent event) {
         Player player = event.getPlayer();
@@ -54,42 +58,43 @@ public class AuraListener implements Listener {
 
         if (players.isEmpty()) return;
 
-        EntityEquipment playerEquipment = player.getEquipment();
+        applyAuraEnchantments(player, players);
 
-        for (ItemStack item : playerEquipment.getArmorContents()) { // The player that moves.
+        for (Player other : players) {
+            applyAuraEnchantments(other, player);
+        }
+    }
+
+    private void applyAuraEnchantments(Player source, Player target) {
+        EntityEquipment equipment = source.getEquipment();
+        if (equipment == null) return;
+
+        for (ItemStack item : equipment.getArmorContents()) {
+            if (item == null) continue;
             Map<CEnchantment, Integer> itemEnchantments = this.enchantmentBookSettings.getEnchantments(item);
             itemEnchantments.forEach((enchantment, level) -> {
                 CEnchantments enchantmentEnum = getAuraEnchantmentEnum(enchantment);
-
-                if (enchantmentEnum != null) players.forEach((other) -> this.plugin.getServer().getPluginManager().callEvent(new AuraActiveEvent(player, other, enchantmentEnum, level)));
-
+                if (enchantmentEnum != null) {
+                    this.plugin.getServer().getPluginManager().callEvent(new AuraActiveEvent(source, target, enchantmentEnum, level));
+                }
             });
         }
-
-        for (Player other : players) {
-            EntityEquipment otherEquipment = other.getEquipment();
-
-            for (ItemStack item : otherEquipment.getArmorContents()) { // The other players moving.
-                Map<CEnchantment, Integer> itemEnchantments = this.enchantmentBookSettings.getEnchantments(item);
-                itemEnchantments.forEach((enchantment, level) -> {
-                    CEnchantments enchantmentEnum = getAuraEnchantmentEnum(enchantment);
-
-                    if (enchantmentEnum != null) this.plugin.getServer().getPluginManager().callEvent(new AuraActiveEvent(other, player, enchantmentEnum, level));
-
-                });
-            }
-        }
     }
-    
-    // Hello Shini
-    // Hello Gabe
 
+    @Nullable
     private CEnchantments getAuraEnchantmentEnum(CEnchantment enchantment) {
-        return Arrays.stream(AURA_ENCHANTMENTS).filter(enchantmentEnum -> enchantmentEnum.getName().equals(enchantment.getName())).findFirst().orElse(null);
+        return Arrays.stream(AURA_ENCHANTMENTS)
+                .filter(enchantmentEnum -> enchantmentEnum.getName().equals(enchantment.getName()))
+                .findFirst()
+                .orElse(null);
     }
 
     private List<Player> getNearbyPlayers(Player player) {
-        return player.getNearbyEntities(3, 3, 3).stream().filter((entity) ->
-                entity instanceof Player && !entity.getUniqueId().equals(player.getUniqueId())).map(entity -> (Player) entity).collect(Collectors.toList());
+        return player.getNearbyEntities(NEARBY_PLAYER_RADIUS, NEARBY_PLAYER_RADIUS, NEARBY_PLAYER_RADIUS)
+                .stream()
+                .filter(Player.class::isInstance)
+                .map(Player.class::cast)
+                .filter(otherPlayer -> !otherPlayer.getUniqueId().equals(player.getUniqueId()))
+                .collect(Collectors.toList());
     }
 }
