@@ -115,6 +115,11 @@ public class AllyMob {
                     Spider spi = (Spider) this.ally;
                     spi.setTarget(enemy);
                 }
+
+                case CAVE_SPIDER -> {
+                    CaveSpider cspi = (CaveSpider) this.ally;
+                    cspi.setTarget(enemy);
+                }
             }
         }, null);
     }
@@ -138,7 +143,8 @@ public class AllyMob {
         ENDERMITE("Endermite", "&5%player%'s Endermite", EntityType.ENDERMITE, 10),
         SILVERFISH("Silverfish", "&7%player%'s Silverfish", EntityType.SILVERFISH, 10),
         BEE("Bee", "&e%player%'s Bee", EntityType.BEE, 10),
-        SPIDER("Spider", "&e%player%'s Spider", EntityType.SPIDER, 10);
+        SPIDER("Spider", "&8%player%'s Spider", EntityType.SPIDER, 10),
+        CAVE_SPIDER("Cave-Spider", "&2%player%'s Cave Spider", EntityType.CAVE_SPIDER, 8);
         
         private final String configName;
         private final String defaultName;
