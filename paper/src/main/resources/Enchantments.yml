@@ -2437,3 +2437,23 @@ Enchantments:
         - '&6Enchantable Items: &aBow'
     Categories:
       - 'Legendary'
+  #Do not change this line.
+  Nest:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_LEVELUP"
+    Name: '&7Nest'
+    MaxPower: 5
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&e&lNest &7(&bI-&bV&7)'
+      Description:
+        - '&7Spawns spiders to help'
+        - '&7when you are in trouble.'
+        - ''
+        - '&6Found in:'
+        - '&7 - &9&l&nRare'
+        - '&7 - &4&l&nLegendary'
+        - '&6Enchantable Items: &aArmor'
+    Categories:
+      - 'Rare'
+      - 'Legendary'

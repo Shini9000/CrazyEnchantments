@@ -7,15 +7,7 @@ import com.badbones69.crazyenchantments.paper.scheduler.FoliaRunnable;
 import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Bee;
-import org.bukkit.entity.Endermite;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.IronGolem;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Silverfish;
-import org.bukkit.entity.Wolf;
-import org.bukkit.entity.Zombie;
+import org.bukkit.entity.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
@@ -118,6 +110,11 @@ public class AllyMob {
                     bee.setCannotEnterHiveTicks(Integer.MAX_VALUE);
                     bee.setTarget(enemy);
                 }
+
+                case SPIDER -> {
+                    Spider spi = (Spider) this.ally;
+                    spi.setTarget(enemy);
+                }
             }
         }, null);
     }
@@ -140,7 +137,8 @@ public class AllyMob {
         ZOMBIE("Zombie", "&2%player%'s Undead", EntityType.ZOMBIE, 45),
         ENDERMITE("Endermite", "&5%player%'s Endermite", EntityType.ENDERMITE, 10),
         SILVERFISH("Silverfish", "&7%player%'s Silverfish", EntityType.SILVERFISH, 10),
-        BEE("Bee", "&e%player%'s Bee", EntityType.BEE, 10);
+        BEE("Bee", "&e%player%'s Bee", EntityType.BEE, 10),
+        SPIDER("Spider", "&e%player%'s Spider", EntityType.SPIDER, 10);
         
         private final String configName;
         private final String defaultName;

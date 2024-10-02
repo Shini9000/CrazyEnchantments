@@ -99,6 +99,7 @@ public enum CEnchantments {
     CROUCH("Crouch", "Armor", 10, 5),
     SHOCKWAVE("Shockwave", "Armor", 10, 5),
     SYSTEMREBOOT("SystemReboot", "Armor", 10, 5),
+    NEST("Nest", "Armor"),
     //	----------------Axes----------------  \\
     REKT("Rekt", "Axe", 5, 1),
     DIZZY("Dizzy", "Axe", 10, 5),

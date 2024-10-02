@@ -117,6 +117,11 @@ public class AllyEnchantments implements Listener {
             spawnAllies(player, enemy, AllyType.ENDERMITE, power * 3);
             spawnAllies(player, enemy, AllyType.SILVERFISH, power * 3);
         }
+
+        if (EnchantUtils.isEventActive(CEnchantments.NEST, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.NEST.getEnchantment());
+            spawnAllies(player, enemy, AllyType.SPIDER, power * 2);
+        }
     }
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)

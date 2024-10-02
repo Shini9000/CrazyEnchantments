@@ -352,3 +352,6 @@ Tinker:
     Planter:
       Items: '20, 1'
       Book: '5, 1'
+    Nest:
+      Items: '20, 1'
+      Book: '5, 1'
