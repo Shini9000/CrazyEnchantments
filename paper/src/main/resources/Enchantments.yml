@@ -2441,7 +2441,7 @@ Enchantments:
   Nest:
     Enabled: true
     Sound: "ENTITY_PLAYER_LEVELUP"
-    Name: '&7Nest'
+    Name: '&bNest'
     MaxPower: 5
     Enchantment-Type: 'Armor'
     Info:

@@ -89,4 +89,6 @@ public class AuraListener implements Listener {
         return player.getNearbyEntities(3, 3, 3).stream().filter((entity) ->
                 entity instanceof Player && !entity.getUniqueId().equals(player.getUniqueId())).map(entity -> (Player) entity).collect(Collectors.toList());
     }
+// test thingy
 }
+
