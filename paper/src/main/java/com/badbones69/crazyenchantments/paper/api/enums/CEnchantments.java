@@ -19,6 +19,7 @@ public enum CEnchantments {
     ROCKET("Rocket", "Boots", 15, 5),
     SPRINGS("Springs", "Boots"),
     ANTIGRAVITY("AntiGravity", "Boots"),
+    SELKIE("Selkie", "Boots"),
     //	----------------Bows----------------  \\
     BOOM("Boom", "Bow", 20, 10),
     PULL("Pull", "Bow", 25, 10),

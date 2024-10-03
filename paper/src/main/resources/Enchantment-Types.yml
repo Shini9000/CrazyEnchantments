@@ -101,8 +101,10 @@ Types:
       Lore:
         - '&7Enchantable Items:'
         - '&a- Bow'
+        - '&a- Crossbow'
     Enchantable-Items:
       - 'BOW'
+      - 'CROSSBOW'
   Sword:
     Display-Item:
       Item: 'GOLDEN_SWORD'
@@ -116,6 +118,7 @@ Types:
         - '&a- Iron Sword'
         - '&a- Diamond Sword'
         - '&a- Netherite Sword'
+        - '&a- Trident'
     Enchantable-Items:
       - 'WOODEN_SWORD'
       - 'STONE_SWORD'
@@ -123,6 +126,7 @@ Types:
       - 'GOLDEN_SWORD'
       - 'DIAMOND_SWORD'
       - 'NETHERITE_SWORD'
+      - 'TRIDENT'
   Axe:
     Display-Item:
       Slot: 6
@@ -292,3 +296,5 @@ Types:
       - 'BOW'
       - 'FISHING_ROD'
       - 'TURTLE_HELMET'
+      - 'TRIDENT'
+      - 'MACE'

@@ -2457,3 +2457,25 @@ Enchantments:
     Categories:
       - 'Rare'
       - 'Legendary'
+  #Do not change this line.
+  Selkie:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_LEVELUP"
+    Name: '&7Selkie'
+    MaxPower: 1
+    Enchantment-Type: 'Boots'
+    Info:
+      Name: '&e&lSelkie &7(&bI)'
+      Description:
+        - '&7Gives you Dolphins Grace'
+        - '&7when you put it on.'
+        - ''
+        - '&6Found in:'
+        - '&7 - &9&l&nCommon'
+        - '&7 - &9&l&nRare'
+        - '&7 - &4&l&nLegendary'
+        - '&6Enchantable Items: &aBoots'
+    Categories:
+      - 'Common'
+      - 'Rare'
+      - 'Legendary'

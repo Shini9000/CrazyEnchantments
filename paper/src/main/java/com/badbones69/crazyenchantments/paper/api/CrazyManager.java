@@ -733,6 +733,9 @@ public class CrazyManager {
         enchants.get(CEnchantments.CYBORG).put(PotionEffectType.STRENGTH, 0);
         enchants.get(CEnchantments.CYBORG).put(PotionEffectType.JUMP_BOOST, -1);
 
+        enchants.put(CEnchantments.SELKIE, new HashMap<>());
+        enchants.get(CEnchantments.SELKIE).put(PotionEffectType.DOLPHINS_GRACE, -1);
+
         return enchants;
     }
 
