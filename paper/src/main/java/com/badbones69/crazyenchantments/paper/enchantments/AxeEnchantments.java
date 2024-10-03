@@ -12,7 +12,10 @@ import com.badbones69.crazyenchantments.paper.api.utils.EntityUtils;
 import com.badbones69.crazyenchantments.paper.api.utils.EventUtils;
 import com.badbones69.crazyenchantments.paper.controllers.settings.EnchantmentBookSettings;
 import com.badbones69.crazyenchantments.paper.support.PluginSupport;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -95,11 +98,25 @@ public class AxeEnchantments implements Listener {
             for (Entity nearbyEntity : damager.getNearbyEntities(3, 3, 3)) {
                 entity.getScheduler().run(plugin, task -> {
                     if (!this.pluginSupport.isFriendly(damager, nearbyEntity)) {
-                        Vector vector = damager.getLocation().toVector().normalize().setY(.5);
-                        Vector vector1 = nearbyEntity.getLocation().toVector().subtract(vector);
-                        nearbyEntity.setVelocity(vector1);
+                        //Vector vector = damager.getLocation().toVector().normalize().setY(10);
+                        //damager.sendMessage(ChatColor.DARK_RED + "DEBUG - " + ChatColor.RED + damager.getName() + " | " + nearbyEntity.getName()); // Debug line
+                        //Vector vector1 = nearbyEntity.getLocation().toVector().subtract(vector);
+                        //nearbyEntity.setVelocity(vector1);
+
+                        Vector damagerVector = damager.getLocation().toVector();
+                        Vector nearbyentVector = nearbyEntity.getLocation().toVector();
+                        Vector vector = nearbyentVector.subtract(damagerVector);
+                        Vector vector2 = nearbyentVector.setY(1);
+
+                        vector.normalize();
+                        vector.multiply(3);
+                        vector2.normalize();
+                        vector2.multiply(5);
+
+                        nearbyEntity.setVelocity(vector);
+                        nearbyEntity.setVelocity(vector2);
                     }
-                }, null);
+                },null);
             }
         }
 
