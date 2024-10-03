@@ -358,3 +358,6 @@ Tinker:
     Selkie:
       Items: '20, 1'
       Book: '5, 1'
+    Roost:
+      Items: '20, 1'
+      Book: '5, 1'

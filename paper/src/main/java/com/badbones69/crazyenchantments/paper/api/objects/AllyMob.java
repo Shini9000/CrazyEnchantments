@@ -144,8 +144,9 @@ public class AllyMob {
         SILVERFISH("Silverfish", "&7%player%'s Silverfish", EntityType.SILVERFISH, 10),
         BEE("Bee", "&e%player%'s Bee", EntityType.BEE, 10),
         SPIDER("Spider", "&8%player%'s Spider", EntityType.SPIDER, 10),
-        CAVE_SPIDER("Cave-Spider", "&2%player%'s Cave Spider", EntityType.CAVE_SPIDER, 8);
-        
+        CAVE_SPIDER("Cave-Spider", "&2%player%'s Cave Spider", EntityType.CAVE_SPIDER, 8),
+        CHICKEN("Chicken", "&2%player%'s Chicken", EntityType.CHICKEN, 500);
+
         private final String configName;
         private final String defaultName;
         private final EntityType entityType;

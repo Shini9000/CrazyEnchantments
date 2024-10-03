@@ -123,6 +123,11 @@ public class AllyEnchantments implements Listener {
             spawnAllies(player, enemy, AllyType.SPIDER, power * 2);
             spawnAllies(player, enemy, AllyType.CAVE_SPIDER, power * 2);
         }
+
+        if (EnchantUtils.isEventActive(CEnchantments.ROOST, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.ROOST.getEnchantment());
+            spawnAllies(player, enemy, AllyType.CHICKEN, power * power);
+        }
     }
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)

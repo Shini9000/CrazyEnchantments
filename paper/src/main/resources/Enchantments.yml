@@ -2461,7 +2461,7 @@ Enchantments:
   Selkie:
     Enabled: true
     Sound: "ENTITY_PLAYER_LEVELUP"
-    Name: '&7Selkie'
+    Name: '&bSelkie'
     MaxPower: 1
     Enchantment-Type: 'Boots'
     Info:
@@ -2471,10 +2471,32 @@ Enchantments:
         - '&7when you put it on.'
         - ''
         - '&6Found in:'
-        - '&7 - &9&l&nCommon'
+        - '&7 - &a&l&nCommon'
         - '&7 - &9&l&nRare'
         - '&7 - &4&l&nLegendary'
         - '&6Enchantable Items: &aBoots'
+    Categories:
+      - 'Common'
+      - 'Rare'
+      - 'Legendary'
+  #Do not change this line.
+  Roost:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_LEVELUP"
+    Name: '&6Roost'
+    MaxPower: 5
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&e&lRoost &7(&bI-&bV&7)'
+      Description:
+        - '&7Spawns chickens to sit around'
+        - '&7when you are in trouble.'
+        - ''
+        - '&6Found in:'
+        - '&7 - &a&l&nCommon'
+        - '&7 - &9&l&nRare'
+        - '&7 - &4&l&nLegendary'
+        - '&6Enchantable Items: &aArmor'
     Categories:
       - 'Common'
       - 'Rare'
