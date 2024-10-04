@@ -1,7 +1,7 @@
 Info-GUI-Settings:
   Inventory:
     Name: '&c&lEnchantment Info'
-    Size: 18
+    Size: 27
   Back-Item:
     Right:
       Item: 'NETHER_STAR'
@@ -225,6 +225,16 @@ Types:
       - 'DIAMOND_HOE'
       - 'NETHERITE_HOE'
       - 'SHEARS'
+  Mace:
+    Display-Item:
+      Item: 'Mace'
+      Slot: 13
+      Name: '&d&lMaceEnchantments'
+      Lore:
+        - '&7Enchantable Items:'
+        - '&a- Mace'
+    Enchantable-Items:
+      - 'MACE'
   Damaged-Items:
     Display-Item:
       Item: 'DAMAGED_ANVIL'

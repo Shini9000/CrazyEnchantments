@@ -361,3 +361,6 @@ Tinker:
     Roost:
       Items: '20, 1'
       Book: '5, 1'
+    Highrise:
+      Items: '20, 1'
+      Book: '5, 1'

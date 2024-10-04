@@ -15,15 +15,7 @@ import com.badbones69.crazyenchantments.paper.commands.TinkerCommand;
 import com.badbones69.crazyenchantments.paper.controllers.BossBarController;
 import com.badbones69.crazyenchantments.paper.controllers.CommandChecker;
 import com.badbones69.crazyenchantments.paper.controllers.LostBookController;
-import com.badbones69.crazyenchantments.paper.enchantments.AllyEnchantments;
-import com.badbones69.crazyenchantments.paper.enchantments.ArmorEnchantments;
-import com.badbones69.crazyenchantments.paper.enchantments.AxeEnchantments;
-import com.badbones69.crazyenchantments.paper.enchantments.BootEnchantments;
-import com.badbones69.crazyenchantments.paper.enchantments.BowEnchantments;
-import com.badbones69.crazyenchantments.paper.enchantments.HoeEnchantments;
-import com.badbones69.crazyenchantments.paper.enchantments.PickaxeEnchantments;
-import com.badbones69.crazyenchantments.paper.enchantments.SwordEnchantments;
-import com.badbones69.crazyenchantments.paper.enchantments.ToolEnchantments;
+import com.badbones69.crazyenchantments.paper.enchantments.*;
 import com.badbones69.crazyenchantments.paper.listeners.AuraListener;
 import com.badbones69.crazyenchantments.paper.listeners.DustControlListener;
 import com.badbones69.crazyenchantments.paper.listeners.FireworkDamageListener;
@@ -116,6 +108,7 @@ public class CrazyEnchantments extends JavaPlugin {
         this.pluginManager.registerEvents(new AxeEnchantments(), this);
         this.pluginManager.registerEvents(new BowEnchantments(), this);
         this.pluginManager.registerEvents(new HoeEnchantments(), this);
+        this.pluginManager.registerEvents(new MaceEnchantments(), this);
 
         this.pluginManager.registerEvents(new ProtectionCrystalListener(), this);
         this.pluginManager.registerEvents(new FireworkDamageListener(), this);
