@@ -2521,3 +2521,23 @@ Enchantments:
     Categories:
       - 'Rare'
       - 'Legendary'
+  #Do not change this line.
+  Shatter:
+    Enabled: false
+    Sound: "ENTITY_PLAYER_LEVELUP"
+    Name: '&dShatter'
+    MaxPower: 5
+    Enchantment-Type: 'Mace'
+    Info:
+      Name: '&d&lShatter &7(&bI-&bIV&7)'
+      Description:
+        - '&7Earthquake AOE attack'
+        - '&7comes with fries'
+        - ''
+        - '&6Found in:'
+        - '&7 - &9&l&nRare'
+        - '&7 - &4&l&nLegendary'
+        - '&6Enchantable Items: &aMace'
+    Categories:
+      - 'Rare'
+      - 'Legendary'

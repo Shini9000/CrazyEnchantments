@@ -364,3 +364,6 @@ Tinker:
     Highrise:
       Items: '20, 1'
       Book: '5, 1'
+    Shatter:
+      Items: '20, 1'
+      Book: '5, 1'

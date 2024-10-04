@@ -55,8 +55,10 @@ public class MaceEnchantments implements Listener {
 
         Map<CEnchantment, Integer> enchantments = this.enchantmentBookSettings.getEnchantments(item);
 
-        if (EnchantUtils.isEventActive(CEnchantments.HIGHRISE, damager, item, enchantments)) {
-            damager.addPotionEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, (enchantments.get(CEnchantments.HIGHRISE.getEnchantment()) + 5) * 20, 3));
-        }
+        //if (EnchantUtils.isEventActive(CEnchantments.HIGHRISE, damager, item, enchantments)) {
+        //    damager.addPotionEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, (enchantments.get(CEnchantments.HIGHRISE.getEnchantment()) + 5) * 20, 3));
+        //}
+
+        //SHATTER future
     }
 }

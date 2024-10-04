@@ -130,7 +130,8 @@ public enum CEnchantments {
     //	----------------All----------------  \\
     HELLFORGED("HellForged", "Damaged-Items", 5, 5),
     //	----------------Mace----------------  \\
-    HIGHRISE("HighRise", "Mace", 7, 5);
+    HIGHRISE("Highrise", "Mace", 7, 5),
+    SHATTER("Shatter", "Mace", 7, 5);
 
     @NotNull
     private final CrazyEnchantments plugin = JavaPlugin.getPlugin(CrazyEnchantments.class);

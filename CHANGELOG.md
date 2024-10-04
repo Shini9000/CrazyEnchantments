@@ -7,4 +7,6 @@ Added the following:
 
 Added a mace enchant class!
 - Highrise enchant for maces
+- - Fix spelling issue
 - Enchantment info
+- Added place for Shatter
