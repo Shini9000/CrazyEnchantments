@@ -225,16 +225,16 @@ Types:
       - 'DIAMOND_HOE'
       - 'NETHERITE_HOE'
       - 'SHEARS'
-  Mace:
-    Display-Item:
-      Item: 'Mace'
-      Slot: 13
-      Name: '&d&lMaceEnchantments'
-      Lore:
-        - '&7Enchantable Items:'
-        - '&a- Mace'
-    Enchantable-Items:
-      - 'MACE'
+  #Mace:
+  #  Display-Item:
+  #    Item: 'Mace'
+  #    Slot: 13
+  #    Name: '&d&lMaceEnchantments'
+  #    Lore:
+  #      - '&7Enchantable Items:'
+  #      - '&a- Mace'
+  #  Enchantable-Items:
+  #    - 'MACE'
   Damaged-Items:
     Display-Item:
       Item: 'DAMAGED_ANVIL'

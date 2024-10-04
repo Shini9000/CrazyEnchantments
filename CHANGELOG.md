@@ -1,12 +1,12 @@
 # Changes:
 ### FEW VERSIONS NOW -
-Added the following:
-- Nest enchant for armor
-- Roost enchant for armor
-- Selki enchant for boots
+Added:
+- Party
+- - Armadillo ally enchantment
 
-Added a mace enchant class!
-- Highrise enchant for maces
-- - Fix spelling issue
-- Enchantment info
-- Added place for Shatter
+Removed: (tbc)
+- Mace enchantments
+
+Changed:
+- Highrise to be a BOW enchantment (tbc as of v1.3)
+- Shatter to be a boot and axe combine combo skill

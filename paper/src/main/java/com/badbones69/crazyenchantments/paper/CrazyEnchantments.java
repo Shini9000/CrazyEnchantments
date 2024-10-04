@@ -108,7 +108,7 @@ public class CrazyEnchantments extends JavaPlugin {
         this.pluginManager.registerEvents(new AxeEnchantments(), this);
         this.pluginManager.registerEvents(new BowEnchantments(), this);
         this.pluginManager.registerEvents(new HoeEnchantments(), this);
-        this.pluginManager.registerEvents(new MaceEnchantments(), this);
+        //this.pluginManager.registerEvents(new MaceEnchantments(), this);
 
         this.pluginManager.registerEvents(new ProtectionCrystalListener(), this);
         this.pluginManager.registerEvents(new FireworkDamageListener(), this);

@@ -2507,7 +2507,7 @@ Enchantments:
     Sound: "ENTITY_PLAYER_LEVELUP"
     Name: '&dHighrise'
     MaxPower: 5
-    Enchantment-Type: 'Mace'
+    Enchantment-Type: 'Bow'
     Info:
       Name: '&d&lHighrise &7(&bI-&bIII&7)'
       Description:
@@ -2517,7 +2517,7 @@ Enchantments:
         - '&6Found in:'
         - '&7 - &9&l&nRare'
         - '&7 - &4&l&nLegendary'
-        - '&6Enchantable Items: &aMace'
+        - '&6Enchantable Items: &aBow'
     Categories:
       - 'Rare'
       - 'Legendary'
@@ -2527,7 +2527,7 @@ Enchantments:
     Sound: "ENTITY_PLAYER_LEVELUP"
     Name: '&dShatter'
     MaxPower: 5
-    Enchantment-Type: 'Mace'
+    Enchantment-Type: 'Boots'
     Info:
       Name: '&d&lShatter &7(&bI-&bIV&7)'
       Description:
@@ -2537,7 +2537,7 @@ Enchantments:
         - '&6Found in:'
         - '&7 - &9&l&nRare'
         - '&7 - &4&l&nLegendary'
-        - '&6Enchantable Items: &aMace'
+        - '&6Enchantable Items: &aBoots'
     Categories:
       - 'Rare'
       - 'Legendary'

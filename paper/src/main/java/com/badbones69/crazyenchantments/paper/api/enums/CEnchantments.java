@@ -20,6 +20,7 @@ public enum CEnchantments {
     SPRINGS("Springs", "Boots"),
     ANTIGRAVITY("AntiGravity", "Boots"),
     SELKIE("Selkie", "Boots"),
+    SHATTER("Shatter", "Boots", 15, 5),
     //	----------------Bows----------------  \\
     BOOM("Boom", "Bow", 20, 10),
     PULL("Pull", "Bow", 25, 10),
@@ -31,6 +32,7 @@ public enum CEnchantments {
     MULTIARROW("MultiArrow", "Bow", 25, 10),
     STICKY_SHOT("Sticky-Shot", "Bow", 10, 10),
     SNIPER("Sniper", "Bow", 25, 5),
+    HIGHRISE("Highrise", "Bow", 25, 5),
     //	----------------Helmets----------------  \\
     GLOWING("Glowing", "Helmet"),
     MERMAID("Mermaid", "Helmet"),
@@ -128,11 +130,11 @@ public enum CEnchantments {
     TILLER("Tiller", "Hoe"),
     PLANTER("Planter", "Hoe"),
     //	----------------All----------------  \\
-    HELLFORGED("HellForged", "Damaged-Items", 5, 5),
-    //	----------------Mace----------------  \\
+    HELLFORGED("HellForged", "Damaged-Items", 5, 5);
+    /**	----------------Mace----------------  \\
     HIGHRISE("Highrise", "Mace", 7, 5),
     SHATTER("Shatter", "Mace", 7, 5);
-
+     **/
     @NotNull
     private final CrazyEnchantments plugin = JavaPlugin.getPlugin(CrazyEnchantments.class);
 

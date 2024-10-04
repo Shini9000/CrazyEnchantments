@@ -1,24 +1,45 @@
 package com.badbones69.crazyenchantments.paper.enchantments;
 
 import com.badbones69.crazyenchantments.paper.CrazyEnchantments;
+import com.badbones69.crazyenchantments.paper.Methods;
 import com.badbones69.crazyenchantments.paper.Starter;
+import com.badbones69.crazyenchantments.paper.api.CrazyManager;
 import com.badbones69.crazyenchantments.paper.api.enums.CEnchantments;
+import com.badbones69.crazyenchantments.paper.api.enums.Messages;
+import com.badbones69.crazyenchantments.paper.api.events.RageBreakEvent;
 import com.badbones69.crazyenchantments.paper.api.managers.WingsManager;
+import com.badbones69.crazyenchantments.paper.api.objects.CEPlayer;
+import com.badbones69.crazyenchantments.paper.api.objects.CEnchantment;
+import com.badbones69.crazyenchantments.paper.api.utils.EnchantUtils;
+import com.badbones69.crazyenchantments.paper.api.utils.EventUtils;
 import com.badbones69.crazyenchantments.paper.api.utils.WingsUtils;
 import com.badbones69.crazyenchantments.paper.controllers.settings.EnchantmentBookSettings;
+import com.badbones69.crazyenchantments.paper.support.PluginSupport;
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
+import com.sk89q.worldguard.bukkit.event.entity.DamageEntityEvent;
+import net.minecraft.world.item.AxeItem;
+import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.Item;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Map;
+
 public class BootEnchantments implements Listener {
+
 
     @NotNull
     private final CrazyEnchantments plugin = JavaPlugin.getPlugin(CrazyEnchantments.class);
@@ -31,7 +52,14 @@ public class BootEnchantments implements Listener {
     private final WingsManager wingsManager = this.starter.getWingsManager();
 
     @NotNull
+    private final Methods methods = this.starter.getMethods();
+
+    @NotNull
     private final EnchantmentBookSettings enchantmentBookSettings = this.starter.getEnchantmentBookSettings();
+
+    // Plugin Support.
+    @NotNull
+    private final PluginSupport pluginSupport = this.starter.getPluginSupport();
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onPlayerEquip(PlayerArmorChangeEvent event) {
@@ -121,5 +149,26 @@ public class BootEnchantments implements Listener {
         player.setFlying(false);
         player.setAllowFlight(false);
         this.wingsManager.removeFlyingPlayer(player);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onPlayerDamage(EntityDamageByEntityEvent event) {
+        if (EventUtils.isIgnoredEvent(event)) return;
+        if (this.pluginSupport.isFriendly(event.getDamager(), event.getEntity())) return;
+
+        if (!(event.getEntity() instanceof LivingEntity entity)) return;
+        if (!(event.getDamager() instanceof Player damager)) return;
+
+        ItemStack item = this.methods.getItemInHand(damager);
+
+        if (entity.isDead()) return;
+
+        Map<CEnchantment, Integer> enchantments = this.enchantmentBookSettings.getEnchantments(item);
+
+        if (EnchantUtils.isEventActive(CEnchantments.SHATTER, damager, item, enchantments) && damager.getActiveItem().getType().name().contains("_axe")) {
+            damager.sendMessage("debug shatter success");
+        } else {
+            damager.sendMessage("debug shatter fail");
+        }
     }
 }
