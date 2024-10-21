@@ -20,7 +20,7 @@ public enum CEnchantments {
     SPRINGS("Springs", "Boots"),
     ANTIGRAVITY("AntiGravity", "Boots"),
     SELKIE("Selkie", "Boots"),
-    SHATTER("Shatter", "Boots", 15, 5),
+    //SHATTER("Shatter", "Boots", 15, 5),
     //	----------------Bows----------------  \\
     BOOM("Boom", "Bow", 20, 10),
     PULL("Pull", "Bow", 25, 10),
@@ -66,7 +66,7 @@ public enum CEnchantments {
     FAMISHED("Famished", "Sword", 10, 5),
     //	----------------Armor----------------  \\
     HULK("Hulk", "Armor"),
-    VALOR("Valor", "Armor"),
+    VALOR("Valor", "Armor", 10, 4),
     DRUNK("Drunk", "Armor"),
     NINJA("Ninja", "Armor"),
     ANGEL("Angel", "Armor"),
@@ -74,7 +74,7 @@ public enum CEnchantments {
     GUARDS("Guards", "Armor"),
     VOODOO("Voodoo", "Armor", 15, 5),
     MOLTEN("Molten", "Armor", 10, 1),
-    SAVIOR("Savior", "Armor", 15, 5),
+    SAVIOR("Savior", "Armor", 6, 2),
     CACTUS("Cactus", "Armor", 25, 25),
     FREEZE("Freeze", "Armor", 10, 5),
     RECOVER("Recover", "Armor"),

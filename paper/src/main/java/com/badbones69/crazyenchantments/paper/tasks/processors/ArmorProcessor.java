@@ -47,7 +47,7 @@ public class ArmorProcessor extends PoolProcessor {
             Map<CEnchantment, Integer> enchantments = this.enchantmentBookSettings.getEnchantments(armor);
             if (enchantments.isEmpty()) continue;
 
-            int heal = 1;
+            double heal = 0.3;
             // Uses getValue as if the player has health boost it is modifying the base so the value after the modifier is needed.
             double maxHealth = Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getValue();
 
@@ -134,7 +134,7 @@ public class ArmorProcessor extends PoolProcessor {
         }, null);
     }
 
-    private void checkNursery(ItemStack armor, Player player, Map<CEnchantment, Integer> enchantments, int heal, double maxHealth) {
+    private void checkNursery(ItemStack armor, Player player, Map<CEnchantment, Integer> enchantments, double heal, double maxHealth) {
 
         if (!EnchantUtils.isMoveEventActive(CEnchantments.NURSERY, player, enchantments)) return;
 

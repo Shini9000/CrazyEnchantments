@@ -34,8 +34,10 @@ import com.badbones69.crazyenchantments.paper.support.CropManager;
 import com.badbones69.crazyenchantments.paper.support.interfaces.CropManagerVersion;
 import com.google.gson.Gson;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
@@ -705,10 +707,10 @@ public class CrazyManager {
         enchants.get(CEnchantments.HULK).put(PotionEffectType.SLOWNESS, -1);
 
         enchants.put(CEnchantments.VALOR, new HashMap<>());
-        enchants.get(CEnchantments.VALOR).put(PotionEffectType.RESISTANCE, -1);
+        //enchants.get(CEnchantments.VALOR).put(PotionEffectType.RESISTANCE, -1);
 
         enchants.put(CEnchantments.OVERLOAD, new HashMap<>());
-        enchants.get(CEnchantments.OVERLOAD).put(PotionEffectType.HEALTH_BOOST, -1);
+        //enchants.get(CEnchantments.OVERLOAD).put(PotionEffectType.HEALTH_BOOST, 1);
 
         enchants.put(CEnchantments.NINJA, new HashMap<>());
         enchants.get(CEnchantments.NINJA).put(PotionEffectType.HEALTH_BOOST, -1);

@@ -151,24 +151,24 @@ public class BootEnchantments implements Listener {
         this.wingsManager.removeFlyingPlayer(player);
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onPlayerDamage(EntityDamageByEntityEvent event) {
-        if (EventUtils.isIgnoredEvent(event)) return;
-        if (this.pluginSupport.isFriendly(event.getDamager(), event.getEntity())) return;
-
-        if (!(event.getEntity() instanceof LivingEntity entity)) return;
-        if (!(event.getDamager() instanceof Player damager)) return;
-
-        ItemStack item = this.methods.getItemInHand(damager);
-
-        if (entity.isDead()) return;
-
-        Map<CEnchantment, Integer> enchantments = this.enchantmentBookSettings.getEnchantments(item);
-
-        if (EnchantUtils.isEventActive(CEnchantments.SHATTER, damager, item, enchantments) && damager.getActiveItem().getType().name().contains("_axe")) {
-            damager.sendMessage("debug shatter success");
-        } else {
-            damager.sendMessage("debug shatter fail");
-        }
-    }
+    //@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    //public void onPlayerDamage(EntityDamageByEntityEvent event) {
+    //    if (EventUtils.isIgnoredEvent(event)) return;
+    //    if (this.pluginSupport.isFriendly(event.getDamager(), event.getEntity())) return;
+//
+    //    if (!(event.getEntity() instanceof LivingEntity entity)) return;
+    //    if (!(event.getDamager() instanceof Player damager)) return;
+//
+    //    ItemStack item = this.methods.getItemInHand(damager);
+//
+    //    if (entity.isDead()) return;
+//
+    //    Map<CEnchantment, Integer> enchantments = this.enchantmentBookSettings.getEnchantments(item);
+//
+    //    if (EnchantUtils.isEventActive(CEnchantments.SHATTER, damager, item, enchantments) && damager.getActiveItem().getType().name().contains("_axe")) {
+    //        damager.sendMessage("debug shatter success");
+    //    } else {
+    //        damager.sendMessage("debug shatter fail");
+    //    }
+    //}
 }

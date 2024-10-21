@@ -254,7 +254,7 @@ public class ArmorEnchantments implements Listener {
             }
 
             if (EnchantUtils.isEventActive(CEnchantments.SHOCKWAVE, player, armor, enchants)) {
-                damager.setVelocity(player.getLocation().getDirection().multiply(2).setY(1.25));
+                damager.setVelocity(player.getLocation().getDirection().multiply(1.6).setY(1.25));
             }
 
             if (player.getHealth() <= event.getFinalDamage() && EnchantUtils.isEventActive(CEnchantments.SYSTEMREBOOT, player, armor, enchants)) {
@@ -289,13 +289,16 @@ public class ArmorEnchantments implements Listener {
                 if (player.getHealth() + heal >= maxHealth) player.setHealth(maxHealth);
             }
 
+            if (EnchantUtils.isEventActive(CEnchantments.VALOR, player, armor, enchants)) player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,9999, -3));
+
             if (EnchantUtils.isEventActive(CEnchantments.INSOMNIA, player, armor, enchants)) damager.damage(event.getDamage() + enchants.get(CEnchantments.INSOMNIA.getEnchantment()));
 
             if (EnchantUtils.isEventActive(CEnchantments.MOLTEN, player, armor, enchants)) damager.setFireTicks((enchants.get(CEnchantments.MOLTEN.getEnchantment()) * 2) * 20);
 
-            if (EnchantUtils.isEventActive(CEnchantments.SAVIOR, player, armor, enchants)) event.setDamage(event.getDamage() / 2);
+            if (EnchantUtils.isEventActive(CEnchantments.SAVIOR, player, armor, enchants)) event.setDamage(event.getDamage() / 1.6);
 
             if (EnchantUtils.isEventActive(CEnchantments.CACTUS, player, armor, enchants)) damager.damage(enchants.get(CEnchantments.CACTUS.getEnchantment()));
+
 
             if (EnchantUtils.isEventActive(CEnchantments.STORMCALLER, player, armor, enchants)) {
                 Entity lightning = this.methods.lightning(damager);
