@@ -289,7 +289,7 @@ public class ArmorEnchantments implements Listener {
                 if (player.getHealth() + heal >= maxHealth) player.setHealth(maxHealth);
             }
 
-            if (EnchantUtils.isEventActive(CEnchantments.VALOR, player, armor, enchants)) player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,9999, -3));
+            if (EnchantUtils.isEventActive(CEnchantments.VALOR, player, armor, enchants)) player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE,9999, 1));
 
             if (EnchantUtils.isEventActive(CEnchantments.INSOMNIA, player, armor, enchants)) damager.damage(event.getDamage() + enchants.get(CEnchantments.INSOMNIA.getEnchantment()));
 
