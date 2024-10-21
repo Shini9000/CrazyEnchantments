@@ -80,7 +80,7 @@ public enum CEnchantments {
     RECOVER("Recover", "Armor"),
     NURSERY("Nursery", "Armor", 5, 5),
     RADIANT("Radiant", "Armor"),
-    FORTIFY("Fortify", "Armor", 10, 5),
+    FORTIFY("Fortify", "Armor", 5, 5),
     OVERLOAD("OverLoad", "Armor"),
     BLIZZARD("Blizzard", "Armor"),
     INSOMNIA("Insomnia", "Armor", 10, 5),
