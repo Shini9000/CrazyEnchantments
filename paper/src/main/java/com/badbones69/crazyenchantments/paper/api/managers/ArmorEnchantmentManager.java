@@ -17,7 +17,7 @@ public class ArmorEnchantmentManager {
     public void load() {
         this.armorEnchantments.clear();
 
-        if (CEnchantments.FORTIFY.isActivated()) this.armorEnchantments.add(new ArmorEnchantment(CEnchantments.FORTIFY, new PotionEffects(PotionEffectType.WEAKNESS, 5 * 20, 0), true));
+        if (CEnchantments.FORTIFY.isActivated()) this.armorEnchantments.add(new ArmorEnchantment(CEnchantments.FORTIFY, new PotionEffects(PotionEffectType.WEAKNESS, 1 * 5, 0), true));
 
         if (CEnchantments.FREEZE.isActivated()) this.armorEnchantments.add(new ArmorEnchantment(CEnchantments.FREEZE, new PotionEffects(PotionEffectType.SLOWNESS, 3 * 20, 1), true));
 
