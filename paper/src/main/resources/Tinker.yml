@@ -367,3 +367,6 @@ Tinker:
     Shatter:
       Items: '20, 1'
       Book: '5, 1'
+    TreeFeller:
+      Items: '20, 1'
+      Book: '5, 1'

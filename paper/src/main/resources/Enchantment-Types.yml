@@ -304,6 +304,7 @@ Types:
       - 'DIAMOND_SWORD'
       - 'NETHERITE_SWORD'
       - 'BOW'
+      - 'CROSSBOW'
       - 'FISHING_ROD'
       - 'TURTLE_HELMET'
       - 'TRIDENT'

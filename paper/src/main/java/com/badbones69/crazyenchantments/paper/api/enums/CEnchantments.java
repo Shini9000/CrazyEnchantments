@@ -19,6 +19,7 @@ public enum CEnchantments {
     ROCKET("Rocket", "Boots", 15, 5),
     SPRINGS("Springs", "Boots"),
     ANTIGRAVITY("AntiGravity", "Boots"),
+    // ABMC \\
     SELKIE("Selkie", "Boots"),
     //SHATTER("Shatter", "Boots", 15, 5),
     //	----------------Bows----------------  \\
@@ -32,6 +33,7 @@ public enum CEnchantments {
     MULTIARROW("MultiArrow", "Bow", 25, 10),
     STICKY_SHOT("Sticky-Shot", "Bow", 10, 10),
     SNIPER("Sniper", "Bow", 25, 5),
+    // ABMC \\
     HIGHRISE("Highrise", "Bow", 25, 5),
     //	----------------Helmets----------------  \\
     GLOWING("Glowing", "Helmet"),
@@ -102,6 +104,7 @@ public enum CEnchantments {
     CROUCH("Crouch", "Armor", 10, 5),
     SHOCKWAVE("Shockwave", "Armor", 10, 5),
     SYSTEMREBOOT("SystemReboot", "Armor", 10, 5),
+    // ABMC \\
     NEST("Nest", "Armor"),
     ROOST("Roost", "Armor"),
     //	----------------Axes----------------  \\
@@ -114,6 +117,8 @@ public enum CEnchantments {
     DECAPITATION("Decapitation", "Axe", 10, 10),
     BATTLECRY("BattleCry", "Axe", 10, 5),
     DEMONFORGED("DemonForged", "Axe", 10, 5),
+    // ABMC \\
+    TREEFELLER("TreeFeller", "Axe"),
     //	----------------PickAxes----------------  \\
     VEINMINER("VeinMiner", "Pickaxe"),
     BLAST("Blast", "Pickaxe"),

@@ -4,7 +4,9 @@ import com.badbones69.crazyenchantments.paper.CrazyEnchantments;
 import com.badbones69.crazyenchantments.paper.Methods;
 import com.badbones69.crazyenchantments.paper.Starter;
 import com.badbones69.crazyenchantments.paper.api.CrazyManager;
+import com.badbones69.crazyenchantments.paper.api.FileManager;
 import com.badbones69.crazyenchantments.paper.api.enums.CEnchantments;
+import com.badbones69.crazyenchantments.paper.api.events.MassBlockBreakEvent;
 import com.badbones69.crazyenchantments.paper.api.objects.CEnchantment;
 import com.badbones69.crazyenchantments.paper.api.builders.ItemBuilder;
 import com.badbones69.crazyenchantments.paper.api.utils.EnchantUtils;
@@ -12,16 +14,16 @@ import com.badbones69.crazyenchantments.paper.api.utils.EntityUtils;
 import com.badbones69.crazyenchantments.paper.api.utils.EventUtils;
 import com.badbones69.crazyenchantments.paper.controllers.settings.EnchantmentBookSettings;
 import com.badbones69.crazyenchantments.paper.support.PluginSupport;
-import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -32,9 +34,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AxeEnchantments implements Listener {
 
@@ -72,13 +72,13 @@ public class AxeEnchantments implements Listener {
         Map<CEnchantment, Integer> enchantments = this.enchantmentBookSettings.getEnchantments(item);
 
         if (EnchantUtils.isEventActive(CEnchantments.BERSERK, damager, item, enchantments)) {
-                damager.addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, (enchantments.get(CEnchantments.BERSERK.getEnchantment()) + 5) * 20, 1));
-                damager.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, (enchantments.get(CEnchantments.BERSERK.getEnchantment()) + 5) * 20, 0));
+            damager.addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, (enchantments.get(CEnchantments.BERSERK.getEnchantment()) + 5) * 20, 1));
+            damager.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, (enchantments.get(CEnchantments.BERSERK.getEnchantment()) + 5) * 20, 0));
         }
 
         if (EnchantUtils.isEventActive(CEnchantments.BLESSED, damager, item, enchantments)) removeBadPotions(damager);
 
-        if (EnchantUtils.isEventActive(CEnchantments.FEEDME, damager, item, enchantments)&& damager.getFoodLevel() < 20) {
+        if (EnchantUtils.isEventActive(CEnchantments.FEEDME, damager, item, enchantments) && damager.getFoodLevel() < 20) {
             int food = 2 * enchantments.get(CEnchantments.FEEDME.getEnchantment());
 
             if (damager.getFoodLevel() + food < 20) damager.setFoodLevel((int) (damager.getSaturation() + food));
@@ -86,7 +86,8 @@ public class AxeEnchantments implements Listener {
             if (damager.getFoodLevel() + food > 20) damager.setFoodLevel(20);
         }
 
-        if (EnchantUtils.isEventActive(CEnchantments.REKT, damager, item, enchantments)) event.setDamage(event.getDamage() * 2);
+        if (EnchantUtils.isEventActive(CEnchantments.REKT, damager, item, enchantments))
+            event.setDamage(event.getDamage() * 2);
 
         if (EnchantUtils.isEventActive(CEnchantments.CURSED, damager, item, enchantments))
             entity.addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, (enchantments.get(CEnchantments.CURSED.getEnchantment()) + 9) * 20, 1));
@@ -116,7 +117,7 @@ public class AxeEnchantments implements Listener {
                         nearbyEntity.setVelocity(vector);
                         nearbyEntity.setVelocity(vector2);
                     }
-                },null);
+                }, null);
             }
         }
 
@@ -182,5 +183,104 @@ public class AxeEnchantments implements Listener {
         }};
 
         bad.forEach(player::removePotionEffect);
+    }
+
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
+    public void onTreeFellerBreak(BlockBreakEvent event) {
+        if (!isWoodBlock(event.getBlock().getType())
+                || !event.isDropItems()
+                || EventUtils.isIgnoredEvent(event))
+            return;
+
+        Player player = event.getPlayer();
+        Block currentBlock = event.getBlock();
+        ItemStack currentItem = methods.getItemInHand(player);
+        Map<CEnchantment, Integer> enchantments = this.enchantmentBookSettings.getEnchantments(currentItem);
+        boolean damage = FileManager.Files.CONFIG.getFile().getBoolean("Settings.EnchantmentOptions.VeinMiner-Full-Durability", true);
+
+        if (!EnchantUtils.isMassBlockBreakActive(player, CEnchantments.TREEFELLER, enchantments)) return;
+
+        HashSet<Block> blockList = getWoodBlocks(currentBlock.getLocation(), enchantments.get(CEnchantments.TREEFELLER.getEnchantment()));
+        blockList.add(currentBlock);
+
+        if (massBlockBreakCheck(player, blockList)) return;
+
+        event.setCancelled(true);
+
+        for (Block block : blockList) {
+            if (block.isEmpty()) continue;
+            if (this.methods.playerBreakBlock(player, block, currentItem, this.crazyManager.isDropBlocksVeinMiner()))
+                continue;
+            if (damage) this.methods.removeDurability(currentItem, player);
+        }
+
+        if (!damage) this.methods.removeDurability(currentItem, player);
+
+        antiCheat(player);
+
+    }
+
+    private boolean isWoodBlock(Material material) {
+        return switch (material) {
+            case OAK_LOG, STRIPPED_OAK_LOG,
+                 SPRUCE_LOG, STRIPPED_SPRUCE_LOG,
+                 BIRCH_LOG, STRIPPED_BIRCH_LOG,
+                 JUNGLE_LOG, STRIPPED_JUNGLE_LOG,
+                 ACACIA_LOG, STRIPPED_ACACIA_LOG,
+                 DARK_OAK_LOG, STRIPPED_DARK_OAK_LOG,
+                 MANGROVE_LOG, STRIPPED_MANGROVE_LOG,
+                 CHERRY_LOG, STRIPPED_CHERRY_LOG,
+                 CRIMSON_STEM, STRIPPED_CRIMSON_STEM,
+                 WARPED_STEM, STRIPPED_WARPED_STEM -> true;
+            default -> false;
+        };
+    }
+
+    private HashSet<Block> getWoodBlocks(Location loc, int amount) {
+        HashSet<Block> blocks = new HashSet<>(Set.of(loc.getBlock()));
+        HashSet<Block> newestBlocks = new HashSet<>(Set.of(loc.getBlock()));
+
+        int depth = 0;
+
+        while (depth < amount) {
+            HashSet<Block> tempBlocks = new HashSet<>();
+
+            for (Block block1 : newestBlocks) {
+                for (Block block : getSurroundingBlocks(block1.getLocation())) {
+                    if (!blocks.contains(block) && isWoodBlock(block.getType())) tempBlocks.add(block);
+                }
+            }
+
+            blocks.addAll(tempBlocks);
+            newestBlocks = tempBlocks;
+
+            ++depth;
+        }
+
+        return blocks;
+    }
+
+    private HashSet<Block> getSurroundingBlocks(Location loc) {
+        HashSet<Block> locations = new HashSet<>();
+
+        locations.add(loc.clone().add(0, 1, 0).getBlock());
+        locations.add(loc.clone().add(0, -1, 0).getBlock());
+        locations.add(loc.clone().add(1, 0, 0).getBlock());
+        locations.add(loc.clone().add(-1, 0, 0).getBlock());
+        locations.add(loc.clone().add(0, 0, 1).getBlock());
+        locations.add(loc.clone().add(0, 0, -1).getBlock());
+
+        return locations;
+    }
+
+    private boolean massBlockBreakCheck(Player player, Set<Block> blockList) {
+        MassBlockBreakEvent event = new MassBlockBreakEvent(player, blockList);
+        this.plugin.getServer().getPluginManager().callEvent(event);
+
+        return event.isCancelled();
+    }
+
+    private void antiCheat(Player player) {
+        //if (SupportedPlugins.NO_CHEAT_PLUS.isPluginLoaded()) this.noCheatPlusSupport.allowPlayer(player);
     }
 }

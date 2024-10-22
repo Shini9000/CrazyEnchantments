@@ -2541,3 +2541,22 @@ Enchantments:
     Categories:
       - 'Rare'
       - 'Legendary'
+  #Do not change this line.
+  TreeFeller:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_LEVELUP"
+    Name: '&dTreeFeller'
+    MaxPower: 6
+    Enchantment-Type: 'Axe'
+    Info:
+      Name: '&e&lTreeFeller &7(&bI-VI&7)'
+      Description:
+        - '&7Breaks connected wood blocks.'
+        - '&7The higher the level, the more'
+        - '&7connected blocks it can break.'
+        - ''
+        - '&6Found in:'
+        - '&7 - &5&l&nMythical'
+        - '&6Enchantable Items: &aAxes'
+    Categories:
+      - 'Mythical'
