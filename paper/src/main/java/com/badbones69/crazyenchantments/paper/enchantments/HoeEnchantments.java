@@ -71,6 +71,7 @@ public class HoeEnchantments implements Listener {
             if (block == null) return;
             Map<CEnchantment, Integer> enchantments = enchantmentBookSettings.getEnchantments(hoe);
 
+
             // Crop is not fully grown.
             if (this.seedlings.contains(block.getType())
                     && !this.crazyManager.getNMSSupport().isFullyGrown(block)
@@ -95,6 +96,7 @@ public class HoeEnchantments implements Listener {
                                 }
                             }
                         }
+
 
                         if (enchantments.containsKey(CEnchantments.PLANTER.getEnchantment())) plantSeedSuccess(soil, player, hasGreenThumb);
 
