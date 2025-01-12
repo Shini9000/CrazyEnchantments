@@ -307,7 +307,7 @@ Settings:
       Toggle: true #Toggle on or off the ability to upgrade the enchantments.
       Enchantment-Break: true #If the book's destroy rate happens the item doesn't break but instead the current lower version of the enchantment is destroyed. If false then the item will be destroyed instead.
     Wings: #Options for the Wings Enchantment.
-      Clouds: true #Toggle if the wings enchantment shows particles under the player's feet. Warning this option has been known to cause lag so toggle it off if you get lag.
+      Clouds: false #Toggle if the wings enchantment shows particles under the player's feet. Warning this option has been known to cause lag so toggle it off if you get lag.
       Enemy-Toggle: true #This toggles on and off the wings enchantment when an enemy is close to the player.
       Distance: 25 #How far away the enemy has to be to toggle off the enchantment.
       Members-Can-Fly: true #Toggle if a player is a member of a world guard region if they can fly.

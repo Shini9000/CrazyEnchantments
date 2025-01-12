@@ -229,12 +229,22 @@ Types:
   #  Display-Item:
   #    Item: 'Mace'
   #    Slot: 13
-  #    Name: '&d&lMaceEnchantments'
+  #    Name: '&d&lMace Enchantments'
   #    Lore:
   #      - '&7Enchantable Items:'
   #      - '&a- Mace'
   #  Enchantable-Items:
   #    - 'MACE'
+  #Trident:
+  #  Display-Item:
+  #    Item: 'Trident'
+  #    Slot: 15
+  #    Name: '&d&lTrident Enchantments'
+  #    Lore:
+  #      - '&7Enchantable Items:'
+  #      - '&a- Trident'
+  #  Enchantable-Items:
+  #    - 'TRIDENT'
   Damaged-Items:
     Display-Item:
       Item: 'DAMAGED_ANVIL'
