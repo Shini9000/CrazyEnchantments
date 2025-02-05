@@ -692,6 +692,7 @@ public class CrazyManager {
 
         enchants.put(CEnchantments.MERMAID, new HashMap<>());
         enchants.get(CEnchantments.MERMAID).put(PotionEffectType.WATER_BREATHING, -1);
+        enchants.get(CEnchantments.MERMAID).put(PotionEffectType.CONDUIT_POWER, -1);
 
         enchants.put(CEnchantments.BURNSHIELD, new HashMap<>());
         enchants.get(CEnchantments.BURNSHIELD).put(PotionEffectType.FIRE_RESISTANCE, -1);
@@ -737,6 +738,9 @@ public class CrazyManager {
 
         enchants.put(CEnchantments.SELKIE, new HashMap<>());
         enchants.get(CEnchantments.SELKIE).put(PotionEffectType.DOLPHINS_GRACE, -1);
+
+        enchants.put(CEnchantments.GHOST, new HashMap<>());
+        enchants.get(CEnchantments.GHOST).put(PotionEffectType.INVISIBILITY, -1);
 
         return enchants;
     }

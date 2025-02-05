@@ -145,7 +145,13 @@ public class AllyMob {
         BEE("Bee", "&e%player%'s Bee", EntityType.BEE, 10),
         SPIDER("Spider", "&8%player%'s Spider", EntityType.SPIDER, 10),
         CAVE_SPIDER("Cave-Spider", "&2%player%'s Cave Spider", EntityType.CAVE_SPIDER, 8),
-        CHICKEN("Chicken", "&2%player%'s Chicken", EntityType.CHICKEN, 500);
+        CHICKEN("Chicken", "&2%player%'s Chicken", EntityType.CHICKEN, 500),
+        POLAR_BEAR("Polar-Bear", "&2%player%'s Polar Bear", EntityType.POLAR_BEAR, 30),
+        BLAZE("Blaze", "&2%player%'s Blaze", EntityType.BLAZE, 20),
+        SKELETON("Skeleton", "&2%player%'s Skeleton", EntityType.SKELETON, 20),
+        WITHER_SKELETON("Wither-Skeleton", "&2%player%'s Wither Skeleton", EntityType.WITHER_SKELETON, 20),
+        SLIME("Slime", "&2%player%'s Slime", EntityType.SLIME, 4),
+        MAGMA_CUBE("Magma-Cube", "&2%player%'s Magma Cube", EntityType.MAGMA_CUBE, 4);
 
         private final String configName;
         private final String defaultName;

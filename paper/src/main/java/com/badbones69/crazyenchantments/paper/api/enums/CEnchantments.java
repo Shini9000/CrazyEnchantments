@@ -21,7 +21,6 @@ public enum CEnchantments {
     ANTIGRAVITY("AntiGravity", "Boots"),
     // ABMC \\
     SELKIE("Selkie", "Boots"),
-    //SHATTER("Shatter", "Boots", 15, 5),
     //	----------------Bows----------------  \\
     BOOM("Boom", "Bow", 20, 10),
     PULL("Pull", "Bow", 25, 10),
@@ -33,13 +32,13 @@ public enum CEnchantments {
     MULTIARROW("MultiArrow", "Bow", 25, 10),
     STICKY_SHOT("Sticky-Shot", "Bow", 10, 10),
     SNIPER("Sniper", "Bow", 25, 5),
-    // ABMC \\
-    HIGHRISE("Highrise", "Bow", 25, 5),
     //	----------------Helmets----------------  \\
     GLOWING("Glowing", "Helmet"),
     MERMAID("Mermaid", "Helmet"),
     IMPLANTS("Implants", "Helmet", 5, 5),
     COMMANDER("Commander", "Helmet"),
+    // ABMC \\
+    GHOST("Ghost", "Helmet"),
     //	----------------Swords----------------  \\
     TRAP("Trap", "Sword", 10, 5),
     RAGE("Rage", "Sword"),
@@ -107,6 +106,10 @@ public enum CEnchantments {
     // ABMC \\
     NEST("Nest", "Armor"),
     ROOST("Roost", "Armor"),
+    CHILLER("Chiller", "Armor"),
+    PYROMANCER("Pyromancer", "Armor"),
+    OSSEIN("Ossein", "Armor"),
+    SQUISHY("Squishy", "Armor"),
     //	----------------Axes----------------  \\
     REKT("Rekt", "Axe", 5, 1),
     DIZZY("Dizzy", "Axe", 10, 5),
@@ -136,10 +139,10 @@ public enum CEnchantments {
     PLANTER("Planter", "Hoe"),
     //	----------------All----------------  \\
     HELLFORGED("HellForged", "Damaged-Items", 5, 5);
-    /**	----------------Mace----------------  \\
+    /*	----------------Mace----------------  \\
     HIGHRISE("Highrise", "Mace", 7, 5),
     SHATTER("Shatter", "Mace", 7, 5);
-     **/
+    */
     @NotNull
     private final CrazyEnchantments plugin = JavaPlugin.getPlugin(CrazyEnchantments.class);
 

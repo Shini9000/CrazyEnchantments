@@ -2560,3 +2560,99 @@ Enchantments:
         - '&6Enchantable Items: &aAxes'
     Categories:
       - 'Mythical'
+  #Do not change this line.
+  Ghost:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_LEVELUP"
+    Name: '&dGhost'
+    MaxPower: 6
+    Enchantment-Type: 'Helmet'
+    Info:
+      Name: '&e&lGhost &7(&bI'
+      Description:
+        - '&7Breaks connected wood blocks.'
+        - '&7The higher the level, the more'
+        - '&7connected blocks it can break.'
+        - ''
+        - '&6Found in:'
+        - '&7 - &5&l&nMythical'
+        - '&6Enchantable Items: &aHelmet'
+    Categories:
+      - 'Mythical'
+  #Do not change this line.
+  Chiller:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_LEVELUP"
+    Name: '&dChiller'
+    MaxPower: 1
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&e&lChiller &7(&bI)'
+      Description:
+        - '&7Breaks connected wood blocks.'
+        - '&7The higher the level, the more'
+        - '&7connected blocks it can break.'
+        - ''
+        - '&6Found in:'
+        - '&7 - &5&l&nMythical'
+        - '&6Enchantable Items: &aArmor'
+    Categories:
+      - 'Mythical'
+  #Do not change this line.
+  Pyromancer:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_LEVELUP"
+    Name: '&dPyromancer'
+    MaxPower: 3
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&e&lPyromancer &7(&bI-III&7)'
+      Description:
+        - '&7Breaks connected wood blocks.'
+        - '&7The higher the level, the more'
+        - '&7connected blocks it can break.'
+        - ''
+        - '&6Found in:'
+        - '&7 - &5&l&nMythical'
+        - '&6Enchantable Items: &aArmor'
+    Categories:
+      - 'Mythical'
+  #Do not change this line.
+  Ossein:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_LEVELUP"
+    Name: '&dOssein'
+    MaxPower: 2
+    Enchantment-Type: 'Axe'
+    Info:
+      Name: '&e&lOssein &7(&bI-II&7)'
+      Description:
+        - '&7Breaks connected wood blocks.'
+        - '&7The higher the level, the more'
+        - '&7connected blocks it can break.'
+        - ''
+        - '&6Found in:'
+        - '&7 - &5&l&nMythical'
+        - '&6Enchantable Items: &aArmor'
+    Categories:
+      - 'Mythical'
+  #Do not change this line.
+  Squishy:
+    Enabled: true
+    Sound: "ENTITY_PLAYER_LEVELUP"
+    Name: '&dSquishy'
+    MaxPower: 2
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&e&lSquishy &7(&bI-II&7)'
+      Description:
+        - '&7Breaks connected wood blocks.'
+        - '&7The higher the level, the more'
+        - '&7connected blocks it can break.'
+        - ''
+        - '&6Found in:'
+        - '&7 - &5&l&nMythical'
+        - '&6Enchantable Items: &aArmor'
+    Categories:
+      - 'Mythical'
+  #Do not change this line.

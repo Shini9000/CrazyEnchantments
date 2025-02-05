@@ -120,13 +120,35 @@ public class AllyEnchantments implements Listener {
 
         if (EnchantUtils.isEventActive(CEnchantments.NEST, player, item, enchants)) {
             int power = enchants.get(CEnchantments.NEST.getEnchantment());
-            spawnAllies(player, enemy, AllyType.SPIDER, power * 2);
-            spawnAllies(player, enemy, AllyType.CAVE_SPIDER, power * 2);
+            spawnAllies(player, enemy, AllyType.SPIDER, power);
+            spawnAllies(player, enemy, AllyType.CAVE_SPIDER, power);
         }
 
         if (EnchantUtils.isEventActive(CEnchantments.ROOST, player, item, enchants)) {
             int power = enchants.get(CEnchantments.ROOST.getEnchantment());
             spawnAllies(player, enemy, AllyType.CHICKEN, power * power);
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.CHILLER, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.CHILLER.getEnchantment());
+            spawnAllies(player, enemy, AllyType.POLAR_BEAR, power);
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.PYROMANCER, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.PYROMANCER.getEnchantment());
+            spawnAllies(player, enemy, AllyType.BLAZE, power);
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.OSSEIN, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.OSSEIN.getEnchantment());
+            spawnAllies(player, enemy, AllyType.SKELETON, power);
+            spawnAllies(player, enemy, AllyType.WITHER_SKELETON, power);
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.SQUISHY, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.SQUISHY.getEnchantment());
+            spawnAllies(player, enemy, AllyType.SLIME, power);
+            spawnAllies(player, enemy, AllyType.MAGMA_CUBE, power);
         }
     }
 

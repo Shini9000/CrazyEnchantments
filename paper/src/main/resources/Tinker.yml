@@ -370,3 +370,18 @@ Tinker:
     TreeFeller:
       Items: '20, 1'
       Book: '5, 1'
+    Ghost:
+      Items: '20, 1'
+      Book: '5, 1'
+    Ossein:
+      Items: '20, 1'
+      Book: '5, 1'
+    Chiller:
+      Items: '20, 1'
+      Book: '5, 1'
+    Pyromancer:
+      Items: '20, 1'
+      Book: '5, 1'
+    Squishy:
+      Items: '20, 1'
+      Book: '5, 1'
