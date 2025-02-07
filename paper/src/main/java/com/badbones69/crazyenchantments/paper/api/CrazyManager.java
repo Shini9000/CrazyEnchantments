@@ -742,6 +742,24 @@ public class CrazyManager {
         enchants.put(CEnchantments.GHOST, new HashMap<>());
         enchants.get(CEnchantments.GHOST).put(PotionEffectType.INVISIBILITY, -1);
 
+        enchants.put(CEnchantments.DIVINITY, new HashMap<>());
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.ABSORPTION, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.RESISTANCE, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.HEALTH_BOOST, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.FIRE_RESISTANCE, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.DOLPHINS_GRACE, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.SPEED, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.JUMP_BOOST, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.HASTE, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.NIGHT_VISION, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.STRENGTH, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.REGENERATION, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.WATER_BREATHING, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.SATURATION, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.LUCK, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.HERO_OF_THE_VILLAGE, -1);
+        enchants.get(CEnchantments.DIVINITY).put(PotionEffectType.CONDUIT_POWER, -1);
+
         return enchants;
     }
 

@@ -151,7 +151,25 @@ public class AllyMob {
                     mc.setTarget(enemy);
                 }
 
+                case WARDEN -> {
+                    Warden w = (Warden) this.ally;
+                    w.setTarget(enemy);
+                }
 
+                case DROWNED -> {
+                    Drowned drow = (Drowned) this.ally;
+                    drow.setTarget(enemy);
+                }
+
+                case RAVAGER -> {
+                    Ravager rave = (Ravager) this.ally;
+                    rave.setTarget(enemy);
+                }
+
+                case ENDERMAN -> {
+                    Enderman eman = (Enderman) this.ally;
+                    eman.setTarget(enemy);
+                }
             }
         }, null);
     }
@@ -184,9 +202,10 @@ public class AllyMob {
         WITHER_SKELETON("Wither-Skeleton", "&2%player%'s Wither Skeleton", EntityType.WITHER_SKELETON, 20),
         SLIME("Slime", "&2%player%'s Slime", EntityType.SLIME, 4),
         MAGMA_CUBE("Magma-Cube", "&2%player%'s Magma Cube", EntityType.MAGMA_CUBE, 4),
-        WARDEN("Warden", "&2%player%'s Warden", EntityType.WARDEN, 100),
+        WARDEN("Warden", "&2%player%'s Warden", EntityType.WARDEN, 250),
         DROWNED("Drowned", "&2%player%'s Drowned", EntityType.DROWNED, 20),
-        RAVAGER("Ravager", "&2%player%'s Ravager", EntityType.RAVAGER, 50);
+        RAVAGER("Ravager", "&2%player%'s Ravager", EntityType.RAVAGER, 100),
+        ENDERMAN("Enderman", "&2%player%'s Enderman", EntityType.ENDERMAN, 40);
 
         private final String configName;
         private final String defaultName;

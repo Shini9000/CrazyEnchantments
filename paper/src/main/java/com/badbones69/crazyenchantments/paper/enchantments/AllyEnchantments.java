@@ -152,7 +152,6 @@ public class AllyEnchantments implements Listener {
         if (EnchantUtils.isEventActive(CEnchantments.SQUISHY, player, item, enchants)) {
             int power = enchants.get(CEnchantments.SQUISHY.getEnchantment());
             spawnAllies(player, enemy, AllyType.SLIME, power);
-            spawnAllies(player, enemy, AllyType.MAGMA_CUBE, power);
         }
 
         if (EnchantUtils.isEventActive(CEnchantments.WARD, player, item, enchants)) {
@@ -163,6 +162,21 @@ public class AllyEnchantments implements Listener {
         if (EnchantUtils.isEventActive(CEnchantments.ABYSSAL, player, item, enchants)) {
             int power = enchants.get(CEnchantments.ABYSSAL.getEnchantment());
             spawnAllies(player, enemy, AllyType.DROWNED, power);
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.MAGMA, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.MAGMA.getEnchantment());
+            spawnAllies(player, enemy, AllyType.MAGMA_CUBE, power);
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.SHADE, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.SHADE.getEnchantment());
+            spawnAllies(player, enemy, AllyType.ENDERMAN, power);
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.RAMPAGE, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.RAMPAGE.getEnchantment());
+            spawnAllies(player, enemy, AllyType.RAVAGER, power);
         }
     }
 

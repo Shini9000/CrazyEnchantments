@@ -113,6 +113,10 @@ public enum CEnchantments {
     CULTIST("Cultist", "Armor"),
     WARD("Ward", "Armor"),
     ABYSSAL("Abyssal", "Armor"),
+    MAGMA("Magma", "Armor"),
+    SHADE("Shade", "Armor"),
+    RAMPAGE("Rampage", "Armor"),
+    DIVINITY("Divinity", "Armor"),
     //	----------------Axes----------------  \\
     REKT("Rekt", "Axe", 5, 1),
     DIZZY("Dizzy", "Axe", 10, 5),

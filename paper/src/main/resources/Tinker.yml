@@ -319,7 +319,7 @@ Tinker:
     SystemReboot:
       Items: '20, 1'
       Book: '5, 1'
-    Sticky-Shot:
+    StickyShot:
       Items: '20, 1'
       Book: '5, 1'
     Disorder:
@@ -392,5 +392,17 @@ Tinker:
       Items: '20, 1'
       Book: '5, 1'
     Abyssal:
+      Items: '20, 1'
+      Book: '5, 1'
+    Magma:
+      Items: '20, 1'
+      Book: '5, 1'
+    Divinity:
+      Items: '20, 1'
+      Book: '5, 1'
+    Shade:
+      Items: '20, 1'
+      Book: '5, 1'
+    Rampage:
       Items: '20, 1'
       Book: '5, 1'
