@@ -104,7 +104,7 @@ public class BowUtils {
 
         Arrow arrow = enchantedArrow.getArrow();
 
-        if (!(EnchantUtils.isEventActive(CEnchantments.STICKY_SHOT, enchantedArrow.getShooter(), enchantedArrow.arrow().getWeapon(), enchantedArrow.getEnchantments()))) return;
+        if (!(EnchantUtils.isEventActive(CEnchantments.STICKYSHOT, enchantedArrow.getShooter(), enchantedArrow.arrow().getWeapon(), enchantedArrow.getEnchantments()))) return;
 
         if (hitEntity == null) {
             Location entityLocation = arrow.getLocation();

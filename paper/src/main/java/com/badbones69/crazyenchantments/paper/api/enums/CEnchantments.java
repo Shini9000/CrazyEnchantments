@@ -30,7 +30,7 @@ public enum CEnchantments {
     ICEFREEZE("IceFreeze", "Bow", 25, 10),
     LIGHTNING("Lightning", "Bow", 25, 10),
     MULTIARROW("MultiArrow", "Bow", 25, 10),
-    STICKY_SHOT("Sticky-Shot", "Bow", 10, 10),
+    STICKYSHOT("StickyShot", "Bow", 10, 10),
     SNIPER("Sniper", "Bow", 25, 5),
     //	----------------Helmets----------------  \\
     GLOWING("Glowing", "Helmet"),
@@ -110,6 +110,9 @@ public enum CEnchantments {
     PYROMANCER("Pyromancer", "Armor"),
     OSSEIN("Ossein", "Armor"),
     SQUISHY("Squishy", "Armor"),
+    CULTIST("Cultist", "Armor"),
+    WARD("Ward", "Armor"),
+    ABYSSAL("Abyssal", "Armor"),
     //	----------------Axes----------------  \\
     REKT("Rekt", "Axe", 5, 1),
     DIZZY("Dizzy", "Axe", 10, 5),

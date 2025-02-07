@@ -385,3 +385,12 @@ Tinker:
     Squishy:
       Items: '20, 1'
       Book: '5, 1'
+    Cultist:
+      Items: '20, 1'
+      Book: '5, 1'
+    Ward:
+      Items: '20, 1'
+      Book: '5, 1'
+    Abyssal:
+      Items: '20, 1'
+      Book: '5, 1'

@@ -142,6 +142,10 @@ public class AllyEnchantments implements Listener {
         if (EnchantUtils.isEventActive(CEnchantments.OSSEIN, player, item, enchants)) {
             int power = enchants.get(CEnchantments.OSSEIN.getEnchantment());
             spawnAllies(player, enemy, AllyType.SKELETON, power);
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.CULTIST, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.CULTIST.getEnchantment());
             spawnAllies(player, enemy, AllyType.WITHER_SKELETON, power);
         }
 
@@ -149,6 +153,16 @@ public class AllyEnchantments implements Listener {
             int power = enchants.get(CEnchantments.SQUISHY.getEnchantment());
             spawnAllies(player, enemy, AllyType.SLIME, power);
             spawnAllies(player, enemy, AllyType.MAGMA_CUBE, power);
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.WARD, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.WARD.getEnchantment());
+            spawnAllies(player, enemy, AllyType.SLIME, power);
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.ABYSSAL, player, item, enchants)) {
+            int power = enchants.get(CEnchantments.ABYSSAL.getEnchantment());
+            spawnAllies(player, enemy, AllyType.DROWNED, power);
         }
     }
 

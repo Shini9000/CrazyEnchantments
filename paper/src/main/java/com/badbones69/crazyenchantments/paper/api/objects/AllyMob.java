@@ -120,6 +120,38 @@ public class AllyMob {
                     CaveSpider cspi = (CaveSpider) this.ally;
                     cspi.setTarget(enemy);
                 }
+
+                case POLAR_BEAR -> {
+                    PolarBear pb = (PolarBear) this.ally;
+                    pb.setTarget(enemy);
+                }
+
+                case BLAZE -> {
+                    Blaze blz = (Blaze) this.ally;
+                    blz.setTarget(enemy);
+                }
+
+                case SKELETON -> {
+                    Skeleton skel = (Skeleton) this.ally;
+                    skel.setTarget(enemy);
+                }
+
+                case WITHER_SKELETON -> {
+                    WitherSkeleton wskel = (WitherSkeleton) this.ally;
+                    wskel.setTarget(enemy);
+                }
+
+                case SLIME -> {
+                    Slime slim = (Slime) this.ally;
+                    slim.setTarget(enemy);
+                }
+
+                case MAGMA_CUBE -> {
+                    MagmaCube mc = (MagmaCube) this.ally;
+                    mc.setTarget(enemy);
+                }
+
+
             }
         }, null);
     }
@@ -132,7 +164,7 @@ public class AllyMob {
                     allyManager.removeAllyMob(instance);
                     ally.remove();
                 }
-            }.runDelayed(this.plugin, this.spawnTime * 20);
+            }.runDelayed(this.plugin, this.spawnTime * 2);
         }
     }
     
@@ -145,13 +177,16 @@ public class AllyMob {
         BEE("Bee", "&e%player%'s Bee", EntityType.BEE, 10),
         SPIDER("Spider", "&8%player%'s Spider", EntityType.SPIDER, 10),
         CAVE_SPIDER("Cave-Spider", "&2%player%'s Cave Spider", EntityType.CAVE_SPIDER, 8),
-        CHICKEN("Chicken", "&2%player%'s Chicken", EntityType.CHICKEN, 500),
+        CHICKEN("Chicken", "&2%player%'s Chicken", EntityType.CHICKEN, 1000),
         POLAR_BEAR("Polar-Bear", "&2%player%'s Polar Bear", EntityType.POLAR_BEAR, 30),
         BLAZE("Blaze", "&2%player%'s Blaze", EntityType.BLAZE, 20),
         SKELETON("Skeleton", "&2%player%'s Skeleton", EntityType.SKELETON, 20),
         WITHER_SKELETON("Wither-Skeleton", "&2%player%'s Wither Skeleton", EntityType.WITHER_SKELETON, 20),
         SLIME("Slime", "&2%player%'s Slime", EntityType.SLIME, 4),
-        MAGMA_CUBE("Magma-Cube", "&2%player%'s Magma Cube", EntityType.MAGMA_CUBE, 4);
+        MAGMA_CUBE("Magma-Cube", "&2%player%'s Magma Cube", EntityType.MAGMA_CUBE, 4),
+        WARDEN("Warden", "&2%player%'s Warden", EntityType.WARDEN, 100),
+        DROWNED("Drowned", "&2%player%'s Drowned", EntityType.DROWNED, 20),
+        RAVAGER("Ravager", "&2%player%'s Ravager", EntityType.RAVAGER, 50);
 
         private final String configName;
         private final String defaultName;
