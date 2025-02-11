@@ -117,6 +117,7 @@ public enum CEnchantments {
     SHADE("Shade", "Armor"),
     RAMPAGE("Rampage", "Armor"),
     DIVINITY("Divinity", "Armor"),
+    QUANTUMANIA("Quantumania", "Armor"),
     //	----------------Axes----------------  \\
     REKT("Rekt", "Axe", 5, 1),
     DIZZY("Dizzy", "Axe", 10, 5),

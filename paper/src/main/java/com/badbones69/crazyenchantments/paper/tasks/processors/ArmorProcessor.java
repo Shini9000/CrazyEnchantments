@@ -10,6 +10,7 @@ import com.badbones69.crazyenchantments.paper.controllers.settings.EnchantmentBo
 import com.badbones69.crazyenchantments.paper.support.PluginSupport;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -51,6 +52,10 @@ public class ArmorProcessor extends PoolProcessor {
             // Uses getValue as if the player has health boost it is modifying the base so the value after the modifier is needed.
             double maxHealth = Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getValue();
 
+            //Chicken's work
+            double size = 0.5;
+            //End chicken
+
             if (maxHealth > player.getHealth() && player.getHealth() > 0) {
                 checkNursery(armor, player, enchantments, heal, maxHealth);
             }
@@ -60,6 +65,10 @@ public class ArmorProcessor extends PoolProcessor {
             }
 
             checkCommander(armor, player, enchantments);
+
+            //Chicken's work
+            //checkQuantumania(armor, player, enchantments);
+            //End chicken
 
             if (PluginSupport.SupportedPlugins.FACTIONS_UUID.isPluginLoaded()) {
                 final int radius = 4 + enchantments.get(CEnchantments.ANGEL.getEnchantment());
@@ -145,6 +154,23 @@ public class ArmorProcessor extends PoolProcessor {
             }
         }, null);
     }
+
+    //Chicken's work
+    /*
+    private void checkQuantumania(ItemStack armor, Player player, Map<CEnchantment, Integer> enchantments) {
+        if (!EnchantUtils.isActive(player, CEnchantments.QUANTUMANIA, enchantments, 1.0)) {
+            AttributeInstance scale = player.getAttribute(Attribute.GENERIC_SCALE);
+            if (scale == null) return;
+            scale.setBaseValue(1.0);
+        } else {
+            AttributeInstance scale = player.getAttribute(Attribute.GENERIC_SCALE);
+            if (scale == null) return;
+            scale.setBaseValue(0.5);
+        }
+
+        return;
+    }*/
+    //End chicken
 
     private void useHellForge(Player player, ItemStack item, Map<CEnchantment, Integer> enchantments) {
 

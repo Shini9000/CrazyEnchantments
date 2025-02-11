@@ -64,6 +64,8 @@ public class EnchantUtils {
      * @param multiplier the multipler of the enchant.
      * @return True if the enchant is active and can be used if the event is passed.
      */
+    //feb 11, 2025, changed isActive method from private to public, waiting to see what shit goes down
+    //changed it back
     private static boolean isActive(Player player, CEnchantments enchant, Map<CEnchantment, Integer> enchants, double multiplier) {
         //if (CrazyEnchantments.getPlugin().getStarter().getCrazyManager().getCEPlayer(player.getUniqueId()).onEnchantCooldown(enchant)) return false;
         return enchants.containsKey(enchant.getEnchantment()) && (player.isOp() ||
