@@ -147,7 +147,7 @@ public enum CEnchantments {
     PLANTER("Planter", "Hoe"),
     //	----------------All----------------  \\
     HELLFORGED("HellForged", "Damaged-Items", 5, 5);
-    /*	----------------Mace----------------  \\
+    /*	----------------Maces----------------  \\
     HIGHRISE("Highrise", "Mace", 7, 5),
     SHATTER("Shatter", "Mace", 7, 5);
     */
