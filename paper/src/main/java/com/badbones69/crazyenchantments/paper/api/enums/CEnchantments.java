@@ -145,12 +145,16 @@ public enum CEnchantments {
     HARVESTER("Harvester", "Hoe"),
     TILLER("Tiller", "Hoe"),
     PLANTER("Planter", "Hoe"),
-    //	----------------All----------------  \\
-    HELLFORGED("HellForged", "Damaged-Items", 5, 5);
+    //	----------------Tridents----------------  \\
+    BRINE("Brine", "Trident", 10, 5),
     /*	----------------Maces----------------  \\
     HIGHRISE("Highrise", "Mace", 7, 5),
     SHATTER("Shatter", "Mace", 7, 5);
     */
+
+    //	----------------All----------------  \\
+    HELLFORGED("HellForged", "Damaged-Items", 5, 5);
+
     @NotNull
     private final CrazyEnchantments plugin = JavaPlugin.getPlugin(CrazyEnchantments.class);
 

@@ -3,22 +3,33 @@ package com.badbones69.crazyenchantments.paper.enchantments;
 import com.badbones69.crazyenchantments.paper.CrazyEnchantments;
 import com.badbones69.crazyenchantments.paper.Methods;
 import com.badbones69.crazyenchantments.paper.Starter;
+import com.badbones69.crazyenchantments.paper.api.FileManager.Files;
+import com.badbones69.crazyenchantments.paper.api.events.EnchantmentUseEvent;
 import com.badbones69.crazyenchantments.paper.api.CrazyManager;
-import com.badbones69.crazyenchantments.paper.api.builders.ItemBuilder;
 import com.badbones69.crazyenchantments.paper.api.economy.Currency;
 import com.badbones69.crazyenchantments.paper.api.economy.CurrencyAPI;
 import com.badbones69.crazyenchantments.paper.api.enums.CEnchantments;
 import com.badbones69.crazyenchantments.paper.api.enums.Messages;
 import com.badbones69.crazyenchantments.paper.api.events.RageBreakEvent;
+import com.badbones69.crazyenchantments.paper.api.managers.BowEnchantmentManager;
+import com.badbones69.crazyenchantments.paper.api.managers.TridentEnchantmentManager; // NEW
+import com.badbones69.crazyenchantments.paper.api.objects.BowEnchantment;
+import com.badbones69.crazyenchantments.paper.api.objects.EnchantedArrow;
+import com.badbones69.crazyenchantments.paper.api.objects.TridentEnchantment; // NEW
+import com.badbones69.crazyenchantments.paper.api.objects.EnchantedTrident; // NEW
 import com.badbones69.crazyenchantments.paper.api.objects.CEPlayer;
 import com.badbones69.crazyenchantments.paper.api.objects.CEnchantment;
+import com.badbones69.crazyenchantments.paper.api.builders.ItemBuilder;
+import com.badbones69.crazyenchantments.paper.api.utils.BowUtils;
 import com.badbones69.crazyenchantments.paper.api.utils.EnchantUtils;
 import com.badbones69.crazyenchantments.paper.api.utils.EntityUtils;
 import com.badbones69.crazyenchantments.paper.api.utils.EventUtils;
+import com.badbones69.crazyenchantments.paper.api.utils.TridentUtils; // NEW
 import com.badbones69.crazyenchantments.paper.controllers.BossBarController;
 import com.badbones69.crazyenchantments.paper.controllers.settings.EnchantmentBookSettings;
 import com.badbones69.crazyenchantments.paper.scheduler.FoliaRunnable;
 import com.badbones69.crazyenchantments.paper.support.PluginSupport;
+import com.badbones69.crazyenchantments.paper.support.PluginSupport.SupportedPlugins;
 import com.badbones69.crazyenchantments.paper.support.anticheats.NoCheatPlusSupport;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -40,6 +51,29 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.jetbrains.annotations.NotNull;
+import org.bukkit.Location;
+import org.bukkit.Sound;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.damage.DamageSource;
+import org.bukkit.damage.DamageType;
+import org.bukkit.entity.Trident;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
+import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -78,13 +112,20 @@ public class TridentEnchantments implements Listener {
     @NotNull
     private final CurrencyAPI currencyAPI = this.starter.getCurrencyAPI();
 
+    // Plugin Managers.
+    @NotNull
+    private final TridentEnchantmentManager tridentEnchantmentManager = this.starter.getTridentEnchantmentManager();
+
+    @NotNull
+    private final TridentUtils tridentUtils = this.starter.getTridentUtils();
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+
     public void onPlayerDamage(EntityDamageByEntityEvent event) {
         if (EventUtils.isIgnoredEvent(event) || EventUtils.isIgnoredUUID(event.getDamager().getUniqueId())) return;
 
         if (this.pluginSupport.isFriendly(event.getDamager(), event.getEntity())) return;
 
-        if (this.crazyManager.isBreakRageOnDamageOn() && event.getEntity() instanceof Player player) {
+        /*if (this.crazyManager.isBreakRageOnDamageOn() && event.getEntity() instanceof Player player) {
             CEPlayer cePlayer = this.crazyManager.getCEPlayer(player);
 
             if (cePlayer != null) {
@@ -100,7 +141,7 @@ public class TridentEnchantments implements Listener {
                     rageInformPlayer(player, Messages.RAGE_DAMAGED, 0f);
                 }
             }
-        }
+        }*/
 
         if (!(event.getEntity() instanceof LivingEntity en)) return;
         if (!(event.getDamager() instanceof final Player damager)) return;
@@ -113,6 +154,11 @@ public class TridentEnchantments implements Listener {
         Map<CEnchantment, Integer> enchantments = this.enchantmentBookSettings.getEnchantments(item);
         boolean isEntityPlayer = event.getEntity() instanceof Player;
 
+        if (EnchantUtils.isEventActive(CEnchantments.BRINE, damager, item, enchantments)) {
+            en.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 5 * 20, enchantments.get(CEnchantments.BRINE.getEnchantment())));
+        }
+
+        /*
         if (isEntityPlayer && EnchantUtils.isEventActive(CEnchantments.DISARMER, damager, item, enchantments)) {
             Player player = (Player) event.getEntity();
 
@@ -310,6 +356,7 @@ public class TridentEnchantments implements Listener {
         if (EnchantUtils.isEventActive(CEnchantments.FAMISHED, damager, item, enchantments)) {
             en.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER, 10 * 20, 1));
         }
+        */
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -320,7 +367,7 @@ public class TridentEnchantments implements Listener {
         Player player = event.getEntity();
         ItemStack item = this.methods.getItemInHand(damager);
         Map<CEnchantment, Integer> enchantments = this.enchantmentBookSettings.getEnchantments(item);
-
+        /*
         if (EnchantUtils.isEventActive(CEnchantments.HEADLESS, damager, item, enchantments)) {
             ItemStack head = new ItemBuilder().setMaterial("PLAYER_HEAD").setPlayerName(player.getName()).build();
             event.getDrops().add(head);
@@ -336,6 +383,7 @@ public class TridentEnchantments implements Listener {
                 ally.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 5 * 20, 1));
             }
         }
+        */
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -345,9 +393,9 @@ public class TridentEnchantments implements Listener {
             ItemStack item = this.methods.getItemInHand(damager);
             Map<CEnchantment, Integer> enchantments = this.enchantmentBookSettings.getEnchantments(item);
 
-            if (EnchantUtils.isEventActive(CEnchantments.INQUISITIVE, damager, item, enchantments)) {
+            /*if (EnchantUtils.isEventActive(CEnchantments.INQUISITIVE, damager, item, enchantments)) {
                 event.setDroppedExp(event.getDroppedExp() * (enchantments.get(CEnchantments.INQUISITIVE.getEnchantment()) + 1));
-            }
+            }*/
 
             Material headMat = EntityUtils.getHeadMaterial(event.getEntity());
             if (headMat != null && !EventUtils.containsDrop(event, headMat)) {
@@ -356,17 +404,17 @@ public class TridentEnchantments implements Listener {
                     ItemStack head = new ItemBuilder().setMaterial(headMat).build();
                     event.getDrops().add(head);
                 }
-			}
+            }
 
             // The entity that is killed is a player.
-            if (event.getEntity() instanceof Player && EnchantUtils.isEventActive(CEnchantments.CHARGE, damager, item, enchantments)) {
+            /*if (event.getEntity() instanceof Player && EnchantUtils.isEventActive(CEnchantments.CHARGE, damager, item, enchantments)) {
                 int radius = 4 + enchantments.get(CEnchantments.CHARGE.getEnchantment());
                 damager.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10 * 20, 1));
 
                 damager.getNearbyEntities(radius, radius, radius).stream().filter(entity ->
                         this.pluginSupport.isFriendly(entity, damager)).forEach(entity ->
                         ((Player) entity).addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10 * 20, 1)));
-            }
+            }*/
         }
     }
 
@@ -379,22 +427,136 @@ public class TridentEnchantments implements Listener {
         };
     }
 
-    private void rageInformPlayer(Player player, Messages message, Map<String, String> placeholders, float progress) {
-        if (message.getMessageNoPrefix().isBlank()) return;
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onTridentThrown(final EntityShootBowEvent event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (EventUtils.isIgnoredEvent(event) || EventUtils.isIgnoredUUID(event.getEntity().getUniqueId())) return;
+        if (!(event.getProjectile() instanceof Trident thrownTrident)) return;
 
-        if (this.crazyManager.useRageBossBar()) {
-            this.bossBarController.updateBossBar(player, message.getMessageNoPrefix(placeholders), progress);
-        } else {
-            player.sendMessage(message.getMessage(placeholders));
+        ItemStack heldTrident = event.getBow();
+
+        if (!this.tridentUtils.allowsCombat(player)) return;
+
+        Map<CEnchantment, Integer> enchants = this.enchantmentBookSettings.getEnchantments(heldTrident);
+        if (enchants.isEmpty()) return;
+
+        // Add the trident to the list.
+        this.tridentUtils.addTrident(thrownTrident, heldTrident, enchants);
+
+        // MultiArrow only code below.
+        /*if (EnchantUtils.isEventActive(CEnchantments.MULTIARROW, player, bow, enchants)) {
+            int power = enchants.get(CEnchantments.MULTIARROW.getEnchantment());
+
+            for (int i = 1; i <= power; i++) this.bowUtils.spawnArrows(player, arrow, bow);
+        }*/
+
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onLand(ProjectileHitEvent event) {
+        if (!(event.getEntity().getShooter() instanceof Player shooter)) return;
+        if (!(event.getEntity() instanceof Trident thrownTrident)) return;
+        if (!this.tridentUtils.allowsCombat(event.getEntity())) return;
+
+        EnchantedTrident enchantedTrident = this.tridentUtils.getEnchantedTrident(thrownTrident);
+
+        if (enchantedTrident == null) return;
+
+        // IN PROGRESS
+        // Spawn water blocks related to WATERBENDER.
+        /*
+        //this.tridentUtils.spawnWaterBlocks(event.getHitEntity(), enchantedTrident);
+
+        if (EnchantUtils.isEventActive(CEnchantments.BOOM, shooter, enchantedArrow.bow(), enchantedArrow.enchantments())) {
+            this.methods.explode(enchantedArrow.getShooter(), enchantedArrow.arrow());
+            enchantedArrow.arrow().remove();
+        }
+
+        if (EnchantUtils.isEventActive(CEnchantments.LIGHTNING, shooter, enchantedArrow.bow(), enchantedArrow.enchantments())) {
+            Location location = enchantedArrow.arrow().getLocation();
+
+            Entity lightning = location.getWorld().strikeLightningEffect(location);
+
+            int lightningSoundRange = Files.CONFIG.getFile().getInt("Settings.EnchantmentOptions.Lightning-Sound-Range", 160);
+
+            try {
+                location.getWorld().playSound(location, Sound.ENTITY_LIGHTNING_BOLT_IMPACT, (float) lightningSoundRange / 16f, 1);
+            } catch (Exception ignore) {
+            }
+
+            // AntiCheat Support.
+            //if (SupportedPlugins.NO_CHEAT_PLUS.isPluginLoaded()) this.noCheatPlusSupport.allowPlayer(shooter);
+
+            for (LivingEntity entity : this.methods.getNearbyLivingEntities(2D, enchantedArrow.arrow())) {
+                EntityDamageEvent damageByEntityEvent = new EntityDamageEvent(entity, DamageCause.LIGHTNING, DamageSource.builder(DamageType.LIGHTNING_BOLT).withCausingEntity(shooter).withDirectEntity(lightning).build(), 5D);
+
+                EventUtils.addIgnoredEvent(damageByEntityEvent);
+                EventUtils.addIgnoredUUID(shooter.getUniqueId());
+                shooter.getServer().getPluginManager().callEvent(damageByEntityEvent);
+
+                if (!damageByEntityEvent.isCancelled() && !this.pluginSupport.isFriendly(enchantedArrow.getShooter(), entity) && !enchantedArrow.getShooter().getUniqueId().equals(entity.getUniqueId()))
+                    entity.damage(5D);
+
+                EventUtils.removeIgnoredEvent(damageByEntityEvent);
+                EventUtils.removeIgnoredUUID(shooter.getUniqueId());
+            }
+
+            //if (SupportedPlugins.NO_CHEAT_PLUS.isPluginLoaded()) this.noCheatPlusSupport.denyPlayer(shooter);
+        }
+        */
+        // Removes the arrow from the list after 5 ticks. This is done because the onArrowDamage event needs the arrow in the list, so it can check.
+        thrownTrident.getScheduler().runDelayed(this.plugin, (arrowTask) -> this.tridentUtils.removeTrident(enchantedTrident),  null, 5);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onThrownTridentDamage(EntityDamageByEntityEvent event) {
+        if (EventUtils.isIgnoredEvent(event)) return;
+        if (!(event.getDamager() instanceof Trident thrownTrident)) return;
+        if (!(event.getEntity() instanceof LivingEntity entity)) return;
+
+        EnchantedTrident enchantedTrident = this.tridentUtils.getEnchantedTrident(thrownTrident);
+        if (enchantedTrident == null) return;
+
+        if (!this.pluginSupport.allowCombat(enchantedTrident.thrownTrident().getLocation())) return;
+        // Damaged player is friendly.
+        /*
+        if (EnchantUtils.isEventActive(CEnchantments.DOCTOR, enchantedArrow.getShooter(), enchantedArrow.bow(), enchantedArrow.enchantments()) && this.pluginSupport.isFriendly(enchantedArrow.getShooter(), event.getEntity())) {
+            int heal = 1 + enchantedArrow.getLevel(CEnchantments.DOCTOR);
+            // Uses getValue as if the player has health boost it is modifying the base so the value after the modifier is needed.
+            double maxHealth = entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+
+            if (entity.getHealth() < maxHealth) {
+                if (entity.getHealth() + heal < maxHealth) entity.setHealth(entity.getHealth() + heal);
+                if (entity.getHealth() + heal >= maxHealth) entity.setHealth(maxHealth);
+            }
+        }
+        */
+        // Damaged player is an enemy.
+        if (this.pluginSupport.isFriendly(enchantedTrident.getShooter(), entity)) return;
+
+        //this.bowUtils.spawnWebs(event.getEntity(), enchantedArrow);
+        /*
+        if (EnchantUtils.isEventActive(CEnchantments.PULL, enchantedArrow.getShooter(), enchantedArrow.bow(), enchantedArrow.enchantments())) {
+            Vector v = enchantedArrow.getShooter().getLocation().toVector().subtract(entity.getLocation().toVector()).normalize().multiply(3);
+            entity.setVelocity(v);
+        }
+        */
+        for (TridentEnchantment tridentEnchantment : this.tridentEnchantmentManager.getTridentEnchantments()) {
+            CEnchantments enchantment = tridentEnchantment.getEnchantment();
+
+            if (!EnchantUtils.isEventActive(enchantment, enchantedTrident.getShooter(), enchantedTrident.heldTrident(), enchantedTrident.enchantments())) continue;
+
+            if (tridentEnchantment.isPotionEnchantment()) {
+                tridentEnchantment.getPotionEffects().forEach(effect -> entity.addPotionEffect(new PotionEffect(effect.potionEffect(), effect.duration(),
+                        (tridentEnchantment.isLevelAddedToAmplifier() ? enchantedTrident.getLevel(enchantment) : 0) + effect.amplifier())));
+            } else {
+                event.setDamage(event.getDamage() * ((tridentEnchantment.isLevelAddedToAmplifier() ? enchantedTrident.getLevel(enchantment) : 0) + tridentEnchantment.getDamageAmplifier()));
+            }
         }
     }
-    private void rageInformPlayer(Player player, Messages message, float progress) {
-        if (message.getMessageNoPrefix().isBlank()) return;
-
-        if (this.crazyManager.useRageBossBar()) {
-            this.bossBarController.updateBossBar(player, message.getMessageNoPrefix(), progress);
-        } else {
-            player.sendMessage(message.getMessage());
-        }
-    }
+    /*
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onWaterBreak(BlockBreakEvent event) {
+        if (!EventUtils.isIgnoredEvent(event) && this.bowUtils.getWebBlocks().contains(event.getBlock())) event.setCancelled(true);
+    }*/
 }

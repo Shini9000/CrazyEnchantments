@@ -10,9 +10,11 @@ import com.badbones69.crazyenchantments.paper.api.economy.vault.VaultSupport;
 import com.badbones69.crazyenchantments.paper.api.managers.AllyManager;
 import com.badbones69.crazyenchantments.paper.api.managers.ArmorEnchantmentManager;
 import com.badbones69.crazyenchantments.paper.api.managers.BowEnchantmentManager;
+import com.badbones69.crazyenchantments.paper.api.managers.TridentEnchantmentManager; // NEW
 import com.badbones69.crazyenchantments.paper.api.managers.ShopManager;
 import com.badbones69.crazyenchantments.paper.api.managers.WingsManager;
 import com.badbones69.crazyenchantments.paper.api.utils.BowUtils;
+import com.badbones69.crazyenchantments.paper.api.utils.TridentUtils; // NEW
 import com.badbones69.crazyenchantments.paper.controllers.EnchantmentControl;
 import com.badbones69.crazyenchantments.paper.controllers.settings.EnchantmentBookSettings;
 import com.badbones69.crazyenchantments.paper.controllers.settings.ProtectionCrystalSettings;
@@ -44,6 +46,7 @@ public class Starter {
 
     // Plugin Utils.
     private BowUtils bowUtils;
+    private TridentUtils tridentUtils; // chicken added
 
     // Plugin Support.
     private SuperiorSkyBlockSupport superiorSkyBlockSupport;
@@ -58,6 +61,7 @@ public class Starter {
     private WingsManager wingsManager;
     private AllyManager allyManager;
     private ShopManager shopManager;
+    private TridentEnchantmentManager tridentEnchantmentManager; // chicken added
 
     // Economy Management.
     private CurrencyAPI currencyAPI;
@@ -104,6 +108,7 @@ public class Starter {
         this.bowEnchantmentManager = new BowEnchantmentManager();
         this.wingsManager = new WingsManager();
         this.allyManager = new AllyManager();
+        this.tridentEnchantmentManager = new TridentEnchantmentManager(); // chicken added
 
         // Listeners.
         this.plugin.pluginManager.registerEvents(this.scramblerListener = new ScramblerListener(), this.plugin);
@@ -116,6 +121,7 @@ public class Starter {
 
         // Plugin Utils.
         this.bowUtils = new BowUtils();
+        this.tridentUtils = new TridentUtils(); // chicken added
 
         this.plugin.pluginManager.registerEvents(new EnchantmentControl(), this.plugin);
     }
@@ -188,6 +194,11 @@ public class Starter {
         return this.bowEnchantmentManager;
     }
 
+    // chicken added
+    public TridentEnchantmentManager getTridentEnchantmentManager() {
+        return this.tridentEnchantmentManager;
+    }
+
     public WingsManager getWingsManager() {
         return this.wingsManager;
     }
@@ -216,5 +227,10 @@ public class Starter {
     // Plugin Utils.
     public BowUtils getBowUtils() {
         return this.bowUtils;
+    }
+
+    // chicken addded
+    public TridentUtils getTridentUtils() {
+        return this.tridentUtils;
     }
 }

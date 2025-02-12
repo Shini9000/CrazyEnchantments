@@ -2502,46 +2502,6 @@ Enchantments:
       - 'Rare'
       - 'Legendary'
   #Do not change this line.
-  Highrise:
-    Enabled: false
-    Sound: "ENTITY_PLAYER_LEVELUP"
-    Name: '&dHighrise'
-    MaxPower: 5
-    Enchantment-Type: 'Bow'
-    Info:
-      Name: '&d&lHighrise &7(&bI-&bIII&7)'
-      Description:
-        - '&7Grants jump boost'
-        - '&7to deal extra damage.'
-        - ''
-        - '&6Found in:'
-        - '&7 - &9&l&nRare'
-        - '&7 - &4&l&nLegendary'
-        - '&6Enchantable Items: &aBow'
-    Categories:
-      - 'Rare'
-      - 'Legendary'
-  #Do not change this line.
-  Shatter:
-    Enabled: false
-    Sound: "ENTITY_PLAYER_LEVELUP"
-    Name: '&dShatter'
-    MaxPower: 5
-    Enchantment-Type: 'Boots'
-    Info:
-      Name: '&d&lShatter &7(&bI-&bIV&7)'
-      Description:
-        - '&7Earthquake AOE attack'
-        - '&7comes with fries'
-        - ''
-        - '&6Found in:'
-        - '&7 - &9&l&nRare'
-        - '&7 - &4&l&nLegendary'
-        - '&6Enchantable Items: &aBoots'
-    Categories:
-      - 'Rare'
-      - 'Legendary'
-  #Do not change this line.
   TreeFeller:
     Enabled: true
     Sound: "ENTITY_PLAYER_LEVELUP"
@@ -2654,5 +2614,275 @@ Enchantments:
         - '&7 - &5&l&nMythical'
         - '&6Enchantable Items: &aArmor'
     Categories:
+      - 'Mythical'
+  #Do not change this line.
+  Ward:
+    Enabled: true
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&aWard'
+    MaxPower: 1
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&l&aWard &7(&bI&7)'
+      Description:
+        - '&7Summons a warden when you are in trouble.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &d&lMythical'
+        - ' '
+        - '&6Enchantable Items: &aArmor'
+    Category:
+      - 'Mythical'
+  #Do not change this line.
+  Quantumania:
+    Enabled: false
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&6Quantumania'
+    MaxPower: 2
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&l&6Quantumania &7(&bI-II&7)'
+      Description:
+        - '&7Shrinks you proportionally by level.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &6&lLegendary'
+        - ' '
+        - '&6Enchantable Items: &aArmor'
+    Category:
+      - 'Legendary'
+  #Do not change this line.
+  Macroscopic:
+    Enabled: false
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&6Macroscopic'
+    MaxPower: 2
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&l&6Macroscopic &7(&bI-II&7)'
+      Description:
+        - '&7Invreases your size proportionally by its level.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &d&lMythical'
+        - ' '
+        - '&6Enchantable Items: &aArmor'
+    Category:
+      - 'Mythical'
+  #Do not change this line.
+  Abyssal:
+    Enabled: true
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&aAbyssal'
+    MaxPower: 3
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&l&aAbyssal &7(&bI-III&7)'
+      Description:
+        - '&7Spawns in drowned when you are in trouble.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &5&lEpic'
+        - ' '
+        - '&6Enchantable Items: &aArmor'
+    Category:
+      - 'Epic'
+  #Do not change this line.
+  Brine:
+    Enabled: true
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&5Brine'
+    MaxPower: 3
+    Enchantment-Type: 'Trident'
+    Info:
+      Name: '&l&5Brine &7(&bI-III&7)'
+      Description:
+        - '&7Attacks have a chance to inflict poison.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &9&lRare'
+        - ' '
+        - '&6Enchantable Items: &aTrident'
+    Category:
+      - 'Rare'
+  #Do not change this line.
+  HighRise:
+    Enabled: false
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&bHighRise'
+    MaxPower: 5
+    Enchantment-Type: 'Mace'
+    Info:
+      Name: '&l&bHighRise &7(&bI-V&7)'
+      Description:
+        - '&7Gives jump boost while holding.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &9&lRare'
+        - ' '
+        - '&6Enchantable Items: &aMace'
+    Category:
+      - 'Rare'
+  #Do not change this line.
+  Shatter:
+    Enabled: false
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&cShatter'
+    MaxPower: 5
+    Enchantment-Type: 'Mace'
+    Info:
+      Name: '&l&cShatter &7(&bI-V&7)'
+      Description:
+        - '&7Attacks deal AOE damage.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &6&lLegendary'
+        - ' '
+        - '&6Enchantable Items: &aMace'
+    Category:
+      - 'Legendary'
+  #Do not change this line.
+  Cultist:
+    Enabled: true
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&aCultist'
+    MaxPower: 3
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&l&aCultist &7(&bI-III&7)'
+      Description:
+        - '&7Summons wither skeletons when you are in trouble.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &6&lLegendary'
+        - ' '
+        - '&6Enchantable Items: &aArmor'
+    Category:
+      - 'Legendary'
+  #Do not change this line.
+  ThunderBringer:
+    Enabled: false
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&cThunderBringer'
+    MaxPower: 3
+    Enchantment-Type: 'Trident'
+    Info:
+      Name: '&l&cThunderBringer &7(&bI-III&7)'
+      Description:
+        - '&7Trident explodes on impact.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &5&lEpic'
+        - ' '
+        - '&6Enchantable Items: &aTrident'
+    Category:
+      - 'Epic'
+  #Do not change this line.
+  Cantilever:
+    Enabled: false
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&cCantilever'
+    MaxPower: 3
+    Enchantment-Type: 'Mace'
+    Info:
+      Name: '&l&cCantilever &7(&bI-III&7)'
+      Description:
+        - '&7Extends your reach reach while holding.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &d&lMythical'
+        - ' '
+        - '&6Enchantable Items: &aMace'
+    Category:
+      - 'Mythical'
+  #Do not change this line.
+  Magma:
+    Enabled: true
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&aMagma'
+    MaxPower: 2
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&l&aMagma &7(&bI-II&7)'
+      Description:
+        - '&7Summons magma cubes when you are in trouble.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &6&lLegendary'
+        - ' '
+        - '&6Enchantable Items: &aArmor'
+    Category:
+      - 'Legendary'
+  #Do not change this line.
+  Divinity:
+    Enabled: true
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&6Divinity'
+    MaxPower: 1
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&l&6Divinity &7(&bI&7)'
+      Description:
+        - '&7Divine power.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &d&lMythical'
+        - ' '
+        - '&6Enchantable Items: &aArmor'
+    Category:
+      - 'Mythical'
+  #Do not change this line.
+  Dolittle:
+    Enabled: false
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&aDolittle'
+    MaxPower: 1
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&l&aDolittle &7(&bI&7)'
+      Description:
+        - '&7Summons Noah''s Aric'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &d&lMythical'
+        - ' '
+        - '&6Enchantable Items: &aArmor'
+    Category:
+      - 'Mythical'
+  #Do not change this line.
+  Shade:
+    Enabled: true
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&aShade'
+    MaxPower: 3
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&l&aShade &7(&bI-III&7)'
+      Description:
+        - '&7Summons endermen when you are in trouble.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &5&lEpic'
+        - ' '
+        - '&6Enchantable Items: &aArmor'
+    Category:
+      - 'Epic'
+  #Do not change this line.
+  Rampage:
+    Enabled: true
+    Sound: 'ENTITY_PLAYER_LEVELUP'
+    Name: '&aRampage'
+    MaxPower: 1
+    Enchantment-Type: 'Armor'
+    Info:
+      Name: '&l&aRampage &7(&bI&7)'
+      Description:
+        - '&7Summons a ravager when you are in trouble.'
+        - ' '
+        - '&6Found in:'
+        - '&7 - &d&lMythical'
+        - ' '
+        - '&6Enchantable Items: &aArmor'
+    Category:
       - 'Mythical'
   #Do not change this line.

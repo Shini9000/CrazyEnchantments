@@ -225,6 +225,16 @@ Types:
       - 'DIAMOND_HOE'
       - 'NETHERITE_HOE'
       - 'SHEARS'
+  Trident:
+    Display-Item:
+      Item: 'Trident'
+      Slot: 15
+      Name: '&d&lTrident Enchantments'
+      Lore:
+        - '&7Enchantable Items:'
+        - '&a- Trident'
+    Enchantable-Items:
+      - 'TRIDENT'
   #Mace:
   #  Display-Item:
   #    Item: 'Mace'
@@ -235,16 +245,6 @@ Types:
   #      - '&a- Mace'
   #  Enchantable-Items:
   #    - 'MACE'
-  #Trident:
-  #  Display-Item:
-  #    Item: 'Trident'
-  #    Slot: 15
-  #    Name: '&d&lTrident Enchantments'
-  #    Lore:
-  #      - '&7Enchantable Items:'
-  #      - '&a- Trident'
-  #  Enchantable-Items:
-  #    - 'TRIDENT'
   Damaged-Items:
     Display-Item:
       Item: 'DAMAGED_ANVIL'
